@@ -1,0 +1,23 @@
+PODS:
+  - Alamofire (4.8.0)
+  - StoryIoT (0.0.1):
+    - Alamofire (= 4.8.0)
+
+DEPENDENCIES:
+  - StoryIoT (from `../story-iot-ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+
+EXTERNAL SOURCES:
+  StoryIoT:
+    :path: "../story-iot-ios"
+
+SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  StoryIoT: d068198594d6328885c7f7fa28e59698121ba25b
+
+PODFILE CHECKSUM: 383b198e6c2d6bcb5612930021cd31e501ce21cf
+
+COCOAPODS: 1.6.0

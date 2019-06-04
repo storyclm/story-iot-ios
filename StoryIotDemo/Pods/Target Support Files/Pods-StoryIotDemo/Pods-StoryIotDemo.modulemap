@@ -1,0 +1,6 @@
+framework module Pods_StoryIotDemo {
+  umbrella header "Pods-StoryIotDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

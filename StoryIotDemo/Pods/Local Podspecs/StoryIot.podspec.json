@@ -1,0 +1,33 @@
+{
+  "name": "StoryIoT",
+  "version": "0.0.1",
+  "summary": "StoryIoT",
+  "description": "Description os SCLMManaging",
+  "homepage": "https://storyclm.com/",
+  "license": {
+    "type": "MIT",
+    "file": "FILE_LICENSE"
+  },
+  "authors": {
+    "Alexander Yolkin": "alexander.yolkin@gmail.com"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "git": "http://StoryCLM/SCLMManaging.git",
+    "tag": "0.0.1"
+  },
+  "source_files": [
+    "StoryIoT",
+    "StoryIoT/**/*.{swift}"
+  ],
+  "exclude_files": "StoryIoT/Exclude",
+  "public_header_files": "StoryIoT/**/*.h",
+  "requires_arc": true,
+  "dependencies": {
+    "Alamofire": [
+      "4.8.0"
+    ]
+  }
+}

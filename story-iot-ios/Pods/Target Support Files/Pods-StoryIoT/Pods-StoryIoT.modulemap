@@ -1,0 +1,6 @@
+framework module Pods_StoryIoT {
+  umbrella header "Pods-StoryIoT-umbrella.h"
+
+  export *
+  module * { export * }
+}

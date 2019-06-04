@@ -1,0 +1,6 @@
+framework module StoryIoT {
+  umbrella header "StoryIoT-umbrella.h"
+
+  export *
+  module * { export * }
+}
