@@ -10,27 +10,32 @@
 		059D92B7BBFBEC53E9A3B6E11C5C3B3A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC6858C85690F7AFEA7F6542EE9A69A /* Response.swift */; };
 		0936DC03F58106FC01B62301A0F31E33 /* Pods-StoryIotDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B38F7BEFD116D1748CB490B4448CA0 /* Pods-StoryIotDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A39AF55285A3A4F7CBABB6D822FA4A3 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C15C076B531E2E7744C358418A0C0B5 /* Alamofire.swift */; };
+		174F7DC4311BCB8CA0D7ABDDEDE129DE /* SIOTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA58CA15904AA051078CA3310150180 /* SIOTError.swift */; };
 		1D29D2ACADF961F69D32B06FA6A09E28 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06639F7A76DB8A9D0D0E41CDD7A6684 /* Notifications.swift */; };
+		1E7D9800A75BFCA6E700A8243D7027DC /* PublishResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09860D9E83971138541BCD81DE2046 /* PublishResponse.swift */; };
+		26214B12CC9A214361D343DCBF2BE21C /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A0095BD6A5618099EB7A97B1B956AE /* AuthCredentials.swift */; };
 		32618594BE4C0AD523BA291D84041968 /* Pods-StoryIotDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9726CF3682C038948C753F9A0697F7E6 /* Pods-StoryIotDemo-dummy.m */; };
+		340B64E22287794CBE132AEE9F5596EE /* StoryIoT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FFC1CA91FED172390622699612E98 /* StoryIoT.swift */; };
 		355C18EEC82624A06A6CC93965258E33 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D59E1AD3CC394A93392FF3DC8CF2961 /* Request.swift */; };
 		3BD1DAFE1F3E6C9E4EB0F2099B6D6FA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0E56BEED9117DC5F2C7AF6582AB9C2 /* Foundation.framework */; };
 		3E0749AF6C51BCF0E4A41CF1D6A76FED /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7F7716086D54E6308EE52C8227B87 /* DispatchQueue+Alamofire.swift */; };
+		402D74D14E9489BCE885A66D305920AC /* MetadataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD6CE63181AFD92B72E1E93F081AD2 /* MetadataModels.swift */; };
 		4ABEF08D877648C47D1698DA7C9535E7 /* Pods-StoryIotDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3FB0FEABCDE4D2051249E353C488A /* Pods-StoryIotDemoTests-dummy.m */; };
-		4E80318C00214AC30BFBA64B4ED8368B /* StoryIoT.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B96C26BEBCA94F9FA35F65A27D3A23A /* StoryIoT.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5414BCDCF8EB8E423645E705828CE7D7 /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994E1BCB8315B996D72000E4ED5B1EF /* AuthCredentials.swift */; };
+		4E80318C00214AC30BFBA64B4ED8368B /* StoryIoT.h in Headers */ = {isa = PBXBuildFile; fileRef = B6DCB83B7FF975C679A400D769ED4441 /* StoryIoT.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60B6C2A003864AAD3A426448152F67BE /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DB5272AD01ECD0B09A86818A7754C4 /* Timeline.swift */; };
 		6EFD003458AE7F689DEA720A2030C261 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B03859BDC36782899379E222720A297 /* ResponseSerialization.swift */; };
 		700D3D95AF9520CB227846DFD943A2DA /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D01BA8472F25D39F718F71557EDC8DD /* ParameterEncoding.swift */; };
 		73AB05789A4982944AF68DBD013E3EB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5460AD0F6241621B45A17AB23A8E5B7 /* NetworkReachabilityManager.swift */; };
 		772911DA6E33D1CBBC30131B7C8BDBB3 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE16989701DCA0B781F86A093D7C5E22 /* Alamofire-dummy.m */; };
 		77E8F0EB9FFBE2E3EB0C77095C644606 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C759635F88377BD7E2DEDE04C23C62 /* TaskDelegate.swift */; };
-		7A6346B6416324C2EF220EBE7CE851B9 /* StoryIoT-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7130AC5309834E52E1419F7804276267 /* StoryIoT-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7912613124411309317AFCB45D61EE17 /* StoryIoT-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD286067087D0149985B67451852E0AB /* StoryIoT-dummy.m */; };
+		7A6346B6416324C2EF220EBE7CE851B9 /* StoryIoT-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32B39618041DCE5DA819FB915D63FE31 /* StoryIoT-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E3538A6992A38276764936A9733493D /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5A0E300C04A6DF88D620788FE38780 /* AFError.swift */; };
 		7F8B91E6A3DBCF9512F1ED3A76C93F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0E56BEED9117DC5F2C7AF6582AB9C2 /* Foundation.framework */; };
 		8D2A6A90A6DDAF75EA52D471258545CC /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4453BE339B79900FDC53E34FE5589CB /* ServerTrustPolicy.swift */; };
 		9DCDADAACB2BC3D29C735BD57D086FAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0E56BEED9117DC5F2C7AF6582AB9C2 /* Foundation.framework */; };
 		A1EC41966B261DCE460BCDE5124A1DBE /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F640F61D5BEE8132009BAEAA65B587A4 /* SessionDelegate.swift */; };
-		A5CABDBE50C8BD4437411100D403DA96 /* StoryIoT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D8FC7AEF78FB99422B76884689ECA5 /* StoryIoT.swift */; };
+		A7ACBDE14A9FD172E5278CB03227BF1E /* SwiftCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344293FF6E27047551CA137BC88B3A26 /* SwiftCrypto.swift */; };
 		A9A3D1D008E044D9A30D2159B1F0C5F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0E56BEED9117DC5F2C7AF6582AB9C2 /* Foundation.framework */; };
 		AA56769D8733D3F3E7976742D5ABA998 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33115EC2A5164913C68F8BD170389EEE /* Validation.swift */; };
 		AEA829AB1A8AF2AD077A808AED6B178A /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE3D7EDCA41F256D471B40BBFD3FCE /* MultipartFormData.swift */; };
@@ -38,7 +43,6 @@
 		B6F6E4CC26451E91B59FAE0F6841DC1F /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15A825CFEBAE606149BF0047C9F5B209 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD81B6A8794514246F8FA2597EAF378C /* Pods-StoryIotDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 177E034F0D3263B9015BFE3DDB35F540 /* Pods-StoryIotDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3FA0AA634AAEA99AB3FABC36BB4958C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E25E371731FAE44F46A9F392CB5D5 /* SessionManager.swift */; };
-		E9FA8AB48A2A245BC832F13377CBF021 /* StoryIoT-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A0A94E788D5F4810E882245DBC28DE /* StoryIoT-dummy.m */; };
 		EB0DD8CEA1A69867A30267439C970440 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD807F155301ECA538A2C1C296E1186D /* Result.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,47 +78,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06B3BF677DE2A009AC760A219D11BDE1 /* StoryIoT.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StoryIoT.xcconfig; sourceTree = "<group>"; };
-		09A0A94E788D5F4810E882245DBC28DE /* StoryIoT-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "StoryIoT-dummy.m"; sourceTree = "<group>"; };
+		01B7FBBA578210E9E407DACF209C6376 /* StoryIoT-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "StoryIoT-Info.plist"; sourceTree = "<group>"; };
 		0D01BA8472F25D39F718F71557EDC8DD /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		15A825CFEBAE606149BF0047C9F5B209 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		177E034F0D3263B9015BFE3DDB35F540 /* Pods-StoryIotDemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StoryIotDemoTests-umbrella.h"; sourceTree = "<group>"; };
-		1B96C26BEBCA94F9FA35F65A27D3A23A /* StoryIoT.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StoryIoT.h; path = StoryIoT/StoryIoT.h; sourceTree = "<group>"; };
 		1C15C076B531E2E7744C358418A0C0B5 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		1E9B5F92DAB428E6C52F8909FEAFC0F5 /* Pods-StoryIotDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StoryIotDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		22CA37D64D5E2AEAC78AD6C1B3432F07 /* Pods-StoryIotDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-StoryIotDemo.modulemap"; sourceTree = "<group>"; };
 		263A0EAE1650FEE6EAE340E84C3ABBE5 /* Pods_StoryIotDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_StoryIotDemo.framework; path = "Pods-StoryIotDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C0942533E7644022088E25A187C1070 /* FILE_LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = FILE_LICENSE; sourceTree = "<group>"; };
+		32B39618041DCE5DA819FB915D63FE31 /* StoryIoT-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StoryIoT-umbrella.h"; sourceTree = "<group>"; };
 		32DB5272AD01ECD0B09A86818A7754C4 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		33115EC2A5164913C68F8BD170389EEE /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		344293FF6E27047551CA137BC88B3A26 /* SwiftCrypto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SwiftCrypto.swift; sourceTree = "<group>"; };
 		34B9D5A220A7F2A028D3B0BE63D98804 /* Pods-StoryIotDemo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StoryIotDemo-Info.plist"; sourceTree = "<group>"; };
-		3836DA3EA9C85506185E2E4C8E53558F /* StoryIoT-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "StoryIoT-Info.plist"; sourceTree = "<group>"; };
-		3994E1BCB8315B996D72000E4ED5B1EF /* AuthCredentials.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
 		3D7E25E371731FAE44F46A9F392CB5D5 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		40FCDBAEB61D38DC62999329F3158BE2 /* Pods-StoryIotDemoTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StoryIotDemoTests-Info.plist"; sourceTree = "<group>"; };
+		4B0135CC1561C9DF7ACFE32CB59F2ABD /* StoryIoT.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = StoryIoT.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4ED7A9DEF5ADB00D72C270DF0B9DCCBB /* FILE_LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = FILE_LICENSE; sourceTree = "<group>"; };
 		4F652B81B77453471CD91E7CE335DD64 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		571FFC1CA91FED172390622699612E98 /* StoryIoT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoryIoT.swift; path = StoryIoT/StoryIoT.swift; sourceTree = "<group>"; };
 		6AB547F27EC3BCEAF154DE06FD3722CD /* Pods-StoryIotDemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StoryIotDemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6C2B50DA08975E724A54DC417BA4209D /* Pods-StoryIotDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StoryIotDemo-frameworks.sh"; sourceTree = "<group>"; };
-		7130AC5309834E52E1419F7804276267 /* StoryIoT-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StoryIoT-umbrella.h"; sourceTree = "<group>"; };
 		7545CF55BE345EA7C318A64E7BFB1C70 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		75C759635F88377BD7E2DEDE04C23C62 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
-		75D8FC7AEF78FB99422B76884689ECA5 /* StoryIoT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoryIoT.swift; path = StoryIoT/StoryIoT.swift; sourceTree = "<group>"; };
+		7A0CB3ADE3E098A49993367E56BC4455 /* StoryIoT.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = StoryIoT.modulemap; sourceTree = "<group>"; };
 		7B03859BDC36782899379E222720A297 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		7C4C2AD9FCC08783327D9E1EACDED8B5 /* StoryIoT.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = StoryIoT.modulemap; sourceTree = "<group>"; };
 		7EB3FB0FEABCDE4D2051249E353C488A /* Pods-StoryIotDemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StoryIotDemoTests-dummy.m"; sourceTree = "<group>"; };
+		8BA58CA15904AA051078CA3310150180 /* SIOTError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SIOTError.swift; sourceTree = "<group>"; };
 		8D5A0E300C04A6DF88D620788FE38780 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		96AC98D0CCFA778066DE3211DF4A612B /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
 		9726CF3682C038948C753F9A0697F7E6 /* Pods-StoryIotDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StoryIotDemo-dummy.m"; sourceTree = "<group>"; };
+		97AD6CE63181AFD92B72E1E93F081AD2 /* MetadataModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetadataModels.swift; sourceTree = "<group>"; };
 		9B992114040F80027943544C38EC85C7 /* Pods-StoryIotDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StoryIotDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D59E1AD3CC394A93392FF3DC8CF2961 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EF96671D817EF13E6159A7EA6E940DE /* Pods-StoryIotDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StoryIotDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0E35A06570D5A91AA3511C0758A89F1 /* Pods-StoryIotDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StoryIotDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		A0F6B1DBF2B95867B02CA909027E6CA1 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		A801462697CF0EB96FD68892F101D494 /* StoryIoT.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StoryIoT.xcconfig; sourceTree = "<group>"; };
 		AFF7F7716086D54E6308EE52C8227B87 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		B06639F7A76DB8A9D0D0E41CDD7A6684 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		B18F8A5047E8E432DBCF5BAF019943C2 /* Pods_StoryIotDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_StoryIotDemoTests.framework; path = "Pods-StoryIotDemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC11593F19A62D7655FA673E3359D03F /* StoryIoT.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = StoryIoT.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B6DCB83B7FF975C679A400D769ED4441 /* StoryIoT.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StoryIoT.h; path = StoryIoT/StoryIoT.h; sourceTree = "<group>"; };
 		BCB9C2D1C772F9D64DF05E1C99673F8E /* Pods-StoryIotDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-StoryIotDemoTests.modulemap"; sourceTree = "<group>"; };
 		BE16989701DCA0B781F86A093D7C5E22 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		BFCE3D7EDCA41F256D471B40BBFD3FCE /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
@@ -124,10 +129,13 @@
 		C4453BE339B79900FDC53E34FE5589CB /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		CCC6858C85690F7AFEA7F6542EE9A69A /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		CD03ACAF8CC392DA908F3ACB71558AF5 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D63B959DC46F56D03EEC0D5A0302609B /* StoryIoT-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StoryIoT-prefix.pch"; sourceTree = "<group>"; };
+		DD286067087D0149985B67451852E0AB /* StoryIoT-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "StoryIoT-dummy.m"; sourceTree = "<group>"; };
 		DD807F155301ECA538A2C1C296E1186D /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		E1784E8AAFD6804A151A5084A6FA96FE /* StoryIoT-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StoryIoT-prefix.pch"; sourceTree = "<group>"; };
 		E49ED2C4190F7CBF75938B68D512DA48 /* Pods-StoryIotDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StoryIotDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB0E56BEED9117DC5F2C7AF6582AB9C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		ED09860D9E83971138541BCD81DE2046 /* PublishResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PublishResponse.swift; sourceTree = "<group>"; };
+		F3A0095BD6A5618099EB7A97B1B956AE /* AuthCredentials.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
 		F5460AD0F6241621B45A17AB23A8E5B7 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		F640F61D5BEE8132009BAEAA65B587A4 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		F8B38F7BEFD116D1748CB490B4448CA0 /* Pods-StoryIotDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StoryIotDemo-umbrella.h"; sourceTree = "<group>"; };
@@ -171,6 +179,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B88656D547C80E56FADDA80C814DD91 /* StoryIoT */ = {
+			isa = PBXGroup;
+			children = (
+				B6DCB83B7FF975C679A400D769ED4441 /* StoryIoT.h */,
+				571FFC1CA91FED172390622699612E98 /* StoryIoT.swift */,
+				2068BC330A90872BDFEED40FA4E17E44 /* Extensions */,
+				34B898BECADB7D7AA7A4ED54E6C3EFD2 /* Libs */,
+				CB50D070C0185FCBC869EE0B43856F84 /* Models */,
+				C99F19436A6F8F3BFC93DC53B53971FC /* Pod */,
+				4335741886C3FEDE9051B84FC45EF256 /* Support Files */,
+			);
+			name = StoryIoT;
+			path = "../../story-iot-ios";
+			sourceTree = "<group>";
+		};
 		12A9BB1DF7F1DB46339255CE63B538BA /* Pods-StoryIotDemoTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,26 +210,36 @@
 			path = "Target Support Files/Pods-StoryIotDemoTests";
 			sourceTree = "<group>";
 		};
-		4BC7893D06777F37DDBAD18F469D24BD /* Pod */ = {
+		2068BC330A90872BDFEED40FA4E17E44 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2C0942533E7644022088E25A187C1070 /* FILE_LICENSE */,
-				BC11593F19A62D7655FA673E3359D03F /* StoryIoT.podspec */,
+				8BA58CA15904AA051078CA3310150180 /* SIOTError.swift */,
 			);
-			name = Pod;
+			name = Extensions;
+			path = StoryIoT/Extensions;
 			sourceTree = "<group>";
 		};
-		78DF8ABC696414918CA8EE47F5B5FE79 /* StoryIoT */ = {
+		34B898BECADB7D7AA7A4ED54E6C3EFD2 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				1B96C26BEBCA94F9FA35F65A27D3A23A /* StoryIoT.h */,
-				75D8FC7AEF78FB99422B76884689ECA5 /* StoryIoT.swift */,
-				B88C4C9B100A9843B903B27040BB17A2 /* Models */,
-				4BC7893D06777F37DDBAD18F469D24BD /* Pod */,
-				B6D356485CFCDEA6E7579DC4B7A3ED1A /* Support Files */,
+				344293FF6E27047551CA137BC88B3A26 /* SwiftCrypto.swift */,
 			);
-			name = StoryIoT;
-			path = "../../story-iot-ios";
+			name = Libs;
+			path = StoryIoT/Libs;
+			sourceTree = "<group>";
+		};
+		4335741886C3FEDE9051B84FC45EF256 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A0CB3ADE3E098A49993367E56BC4455 /* StoryIoT.modulemap */,
+				A801462697CF0EB96FD68892F101D494 /* StoryIoT.xcconfig */,
+				DD286067087D0149985B67451852E0AB /* StoryIoT-dummy.m */,
+				01B7FBBA578210E9E407DACF209C6376 /* StoryIoT-Info.plist */,
+				D63B959DC46F56D03EEC0D5A0302609B /* StoryIoT-prefix.pch */,
+				32B39618041DCE5DA819FB915D63FE31 /* StoryIoT-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../StoryIotDemo/Pods/Target Support Files/StoryIoT";
 			sourceTree = "<group>";
 		};
 		90FDDC7F5D24472360CA259A8D40AE98 /* Pods */ = {
@@ -265,18 +298,12 @@
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		B6D356485CFCDEA6E7579DC4B7A3ED1A /* Support Files */ = {
+		B6EC407C4867870FB7F869B9A10B925A /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7C4C2AD9FCC08783327D9E1EACDED8B5 /* StoryIoT.modulemap */,
-				06B3BF677DE2A009AC760A219D11BDE1 /* StoryIoT.xcconfig */,
-				09A0A94E788D5F4810E882245DBC28DE /* StoryIoT-dummy.m */,
-				3836DA3EA9C85506185E2E4C8E53558F /* StoryIoT-Info.plist */,
-				E1784E8AAFD6804A151A5084A6FA96FE /* StoryIoT-prefix.pch */,
-				7130AC5309834E52E1419F7804276267 /* StoryIoT-umbrella.h */,
+				0B88656D547C80E56FADDA80C814DD91 /* StoryIoT */,
 			);
-			name = "Support Files";
-			path = "../StoryIotDemo/Pods/Target Support Files/StoryIoT";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		B7686059A9B7DD0659D0BD028E537415 /* Targets Support Files */ = {
@@ -286,15 +313,6 @@
 				12A9BB1DF7F1DB46339255CE63B538BA /* Pods-StoryIotDemoTests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		B88C4C9B100A9843B903B27040BB17A2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3994E1BCB8315B996D72000E4ED5B1EF /* AuthCredentials.swift */,
-			);
-			name = Models;
-			path = StoryIoT/Models;
 			sourceTree = "<group>";
 		};
 		BAF6E8CD657926C171367C2DCCB17C41 /* Products */ = {
@@ -308,24 +326,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C99F19436A6F8F3BFC93DC53B53971FC /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				4ED7A9DEF5ADB00D72C270DF0B9DCCBB /* FILE_LICENSE */,
+				4B0135CC1561C9DF7ACFE32CB59F2ABD /* StoryIoT.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		CB50D070C0185FCBC869EE0B43856F84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F3A0095BD6A5618099EB7A97B1B956AE /* AuthCredentials.swift */,
+				97AD6CE63181AFD92B72E1E93F081AD2 /* MetadataModels.swift */,
+				ED09860D9E83971138541BCD81DE2046 /* PublishResponse.swift */,
+			);
+			name = Models;
+			path = StoryIoT/Models;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D7C07F21A86B4926DBACA6B04DD2C1F9 /* Development Pods */,
+				B6EC407C4867870FB7F869B9A10B925A /* Development Pods */,
 				EFA834D50E48CF4E37AC7A12D391AC85 /* Frameworks */,
 				90FDDC7F5D24472360CA259A8D40AE98 /* Pods */,
 				BAF6E8CD657926C171367C2DCCB17C41 /* Products */,
 				B7686059A9B7DD0659D0BD028E537415 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D7C07F21A86B4926DBACA6B04DD2C1F9 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				78DF8ABC696414918CA8EE47F5B5FE79 /* StoryIoT */,
-			);
-			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		EB3968904142B6B8568690B8371A4A3A /* Pods-StoryIotDemo */ = {
@@ -455,7 +485,7 @@
 			buildConfigurationList = 94E15E6A7E8732F5B958E04523182666 /* Build configuration list for PBXNativeTarget "StoryIoT" */;
 			buildPhases = (
 				5173A27179508981B51AED803EA9AD43 /* Headers */,
-				69CB8F1CF284A77EFEA16B1351BCBEBF /* Sources */,
+				568080642F99E080964C84B8EC24C8D6 /* Sources */,
 				E33260A543682C16D447E42E7C818825 /* Frameworks */,
 				B7552BE2972DCFD0FCDC11B90D640F17 /* Resources */,
 			);
@@ -546,13 +576,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69CB8F1CF284A77EFEA16B1351BCBEBF /* Sources */ = {
+		568080642F99E080964C84B8EC24C8D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5414BCDCF8EB8E423645E705828CE7D7 /* AuthCredentials.swift in Sources */,
-				E9FA8AB48A2A245BC832F13377CBF021 /* StoryIoT-dummy.m in Sources */,
-				A5CABDBE50C8BD4437411100D403DA96 /* StoryIoT.swift in Sources */,
+				26214B12CC9A214361D343DCBF2BE21C /* AuthCredentials.swift in Sources */,
+				402D74D14E9489BCE885A66D305920AC /* MetadataModels.swift in Sources */,
+				1E7D9800A75BFCA6E700A8243D7027DC /* PublishResponse.swift in Sources */,
+				174F7DC4311BCB8CA0D7ABDDEDE129DE /* SIOTError.swift in Sources */,
+				7912613124411309317AFCB45D61EE17 /* StoryIoT-dummy.m in Sources */,
+				340B64E22287794CBE132AEE9F5596EE /* StoryIoT.swift in Sources */,
+				A7ACBDE14A9FD172E5278CB03227BF1E /* SwiftCrypto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +647,7 @@
 /* Begin XCBuildConfiguration section */
 		25F467234F72DDA5D8D9528F64FD55CE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06B3BF677DE2A009AC760A219D11BDE1 /* StoryIoT.xcconfig */;
+			baseConfigurationReference = A801462697CF0EB96FD68892F101D494 /* StoryIoT.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -851,7 +885,7 @@
 		};
 		89F3CF2ED68802B1F43628DCD1200816 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06B3BF677DE2A009AC760A219D11BDE1 /* StoryIoT.xcconfig */;
+			baseConfigurationReference = A801462697CF0EB96FD68892F101D494 /* StoryIoT.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";

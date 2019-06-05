@@ -19,7 +19,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let siot = StoryIoT(authCredentialsPlistName: "AuthCredentials")
-        siot.fo()
+//        var body = [String: String]()
+//        body["myName"] = "Sasha"
+//        siot.publishSmall(body: body, success: { response in
+//            print("")
+//        }) { (error) in
+//
+//        }
+        
+        siot.getMessage(withMessgaeId: "ca72d03bcd8544bcad72ff28f5204df9", success: {response in 
+            
+            siot.updateMeta(metaName: "ip", withNewValue: "1234", inMessageWithId: "ca72d03bcd8544bcad72ff28f5204df9", success: { (response) in
+                
+            }, failure: { (err) in
+                
+            })
+            
+        }) { (err) in
+            
+        }
         
         return true
     }

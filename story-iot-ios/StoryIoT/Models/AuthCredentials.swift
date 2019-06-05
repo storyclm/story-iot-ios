@@ -13,5 +13,5 @@ struct AuthCredentials {
     let hub: String
     let key: String
     let secret: String
-    let expirationTimeInterval: Int
+    let expirationTimeInterval: TimeInterval
 }
