@@ -27,17 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        }
         
-        siot.getMessage(withMessgaeId: "ca72d03bcd8544bcad72ff28f5204df9", success: {response in 
-            
-            siot.updateMeta(metaName: "ip", withNewValue: "1234", inMessageWithId: "ca72d03bcd8544bcad72ff28f5204df9", success: { (response) in
-                
-            }, failure: { (err) in
-                
-            })
+        siot.publishLarge(data: Data(), success: { (response) in
             
         }) { (err) in
             
+            
         }
+        
         
         return true
     }

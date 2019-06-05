@@ -11,6 +11,12 @@ import Alamofire
 
 let timeoutInterval: TimeInterval = 120
 
+public enum FeedDirection: String {
+    case forward = "forward"
+    case backward = "backward"
+}
+
+
 public class StoryIoT {
     
     private let authCredentials: AuthCredentials
@@ -116,6 +122,27 @@ public class StoryIoT {
 
     }
     
+    private func getFeedRequestUrl(token: String?,
+                                   direction: FeedDirection,
+                                   size: Int) -> URL? {
+        
+        let expirationString = ISO8601DateFormatter().string(from: Date(timeIntervalSinceNow: authCredentials.expirationTimeInterval))
+        
+        if let signature = buildSignature(forKey: authCredentials.key, privateKey: authCredentials.secret, expiration: expirationString) {
+            
+            var requestString = "\(authCredentials.endpoint)/\(authCredentials.hub)/feed/?key=\(authCredentials.key)&expiration=\(expirationString)&signature=\(signature)&direction=\(direction.rawValue)&size=\(size)"
+            
+            if let token = token {
+                requestString = requestString + "&token=\(token)"
+            }
+            
+            return URL(string: requestString)
+            
+        }
+        
+        return nil
+    }
+    
     // MARK: - Publish
     
     public func publishSmall(body: [String: String],
@@ -154,6 +181,59 @@ public class StoryIoT {
                 if let data = response.data {
 //                    let utf8Text = String(data: data, encoding: .utf8)
 //                    print("Data: \(utf8Text)")
+                    
+                    let jsonDecoder = JSONDecoder()
+                    do {
+                        let response = try jsonDecoder.decode(PublishResponse.self, from: data)
+                        success(response)
+                    } catch (let err) {
+                        print(err.localizedDescription)
+                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        failure(err)
+                    }
+                    
+                } else {
+                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    failure(err)
+                    
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                failure(error as NSError)
+            }
+            
+        }
+        
+    }
+    
+    public func publishLarge(data: Data,
+                             success: @escaping (_ response: PublishResponse) -> Void,
+                             failure: @escaping (_ error: NSError) -> Void) {
+        
+        guard let url = publishRequestUrl() else {
+            let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
+            failure(err)
+            return
+        }
+        
+        
+        let metadata = Metadata()
+        var headers: HTTPHeaders = metadata.asDictionary()
+        headers["Content-Type"] = "application/json"
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.allHTTPHeaderFields = headers
+     
+        Alamofire.request(request).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .success(_):
+                if let data = response.data {
+                    let utf8Text = String(data: data, encoding: .utf8)
+                    print("Data: \(utf8Text)")
                     
                     let jsonDecoder = JSONDecoder()
                     do {
@@ -313,6 +393,66 @@ public class StoryIoT {
                     do {
                         let response = try jsonDecoder.decode(PublishResponse.self, from: data)
                         success(response)
+                    } catch (let err) {
+                        print(err.localizedDescription)
+                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        failure(err)
+                    }
+                    
+                } else {
+                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    failure(err)
+                    
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                failure(error as NSError)
+            }
+            
+        }
+        
+    }
+    
+    // MARK: - Feed
+    
+    /// Лента сообщений предоставляет доступ к хранилищу сообщения представляя его в виде последовательного набора сообщений отсортированных по дате добавления сообщений в хранилище в порядке возрастания. В ленте отображаются только подтвержденные сообщения.
+    
+    /// В ленте сообщения расположены по порядку одно за другим в том порядке в котором они публикуются издателями. По этому, ленту можно обойти выбирая сообщения страницами в двух направлениях - от начала в конец и наоборот.
+    
+    /// Обход ленты сообщений осуществляется посредством токена продолжения. Вместе со страницей в заголовке ответа передается токен продолжение. Чтобы получить следующую страницу необходимо в следующий запрос передать токен продолженя и будет возвращена следующая страница. Таким образом, при первом запросе сервером устанавливается курсор и при каждом последующем запросе курсор смещается. Таким образом можно обойти все летнту сообщений в двух направления, указывая токен продолжения из предыдущего запроса и направление обхода ленты.
+    
+    /// Если токен не указан, то курсор устанавливается на первое сообщение в хранилище. После того, как будет произведена выборка первых записей в заголовке будет возвращен токен продолжения. Так начинается обход ленты.
+    
+    /// Токен продолжения можно сохранять и в любой момент продолжить получать новые сообщения для обработки.
+
+    public func getFeed(token: String?,
+                          direction: FeedDirection,
+                          size: Int,
+                          success: @escaping (_ response: [PublishResponse], _ token: String?) -> Void,
+                          failure: @escaping (_ error: NSError) -> Void) {
+        
+        guard let url = getFeedRequestUrl(token: token, direction: direction, size: size) else {
+            let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
+            failure(err)
+            return
+        }
+        
+        self.manager.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .success(_):
+                if let data = response.data {
+//                    let utf8Text = String(data: data, encoding: .utf8)
+//                    print("Data: \(utf8Text)")
+                    
+                    let token = response.response?.allHeaderFields["cursor-position"] as? String
+                    
+                    let jsonDecoder = JSONDecoder()
+                    do {
+                        let response = try jsonDecoder.decode([PublishResponse].self, from: data)
+                        success(response, token)
                     } catch (let err) {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
