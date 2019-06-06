@@ -143,6 +143,21 @@ public class StoryIoT {
         return nil
     }
     
+    private func getConfirmLargeUrl(messageId: String) -> URL? {
+        
+        let expirationString = ISO8601DateFormatter().string(from: Date(timeIntervalSinceNow: authCredentials.expirationTimeInterval))
+        
+        if let signature = buildSignature(forKey: authCredentials.key, privateKey: authCredentials.secret, expiration: expirationString) {
+            
+            let requestString = "\(authCredentials.endpoint)/\(authCredentials.hub)/publish/\(messageId)/confirm/?key=\(authCredentials.key)&expiration=\(expirationString)&signature=\(signature)"
+            
+            return URL(string: requestString)
+            
+        }
+        
+        return nil
+    }
+    
     // MARK: - Publish
     
     public func publishSmall(body: [String: String],
@@ -207,6 +222,12 @@ public class StoryIoT {
         
     }
     
+    // MARK: Large
+    
+    /// Большие данные. Этот тип сообщения позволяет загружать сообщения размер которых ограничивается только реализацией хранилища сообщений. Стандартное хранилище позволяет хранить сообщения размером до 2TB каждое. Публикация сообщений этого типа существенно отличается от публикации маленького сообщения.
+    /// Публикация сообщения возможна только по протоколу HTTPS. Процесс выглядит следующим образом:
+    /// Издатель публикует сообщение в конечную точку с пустым телом. Если авторизация и валидация сообщения прошла успешно, сервер присваивает сообщению уникальный идентификатор, извлекает метаданные из сообщения и создает пустой объект в хранилище сообщений. Это сообщение не будет видно в ленте.
+
     public func publishLarge(data: Data,
                              success: @escaping (_ response: PublishResponse) -> Void,
                              failure: @escaping (_ error: NSError) -> Void) {
@@ -234,6 +255,120 @@ public class StoryIoT {
                 if let data = response.data {
                     let utf8Text = String(data: data, encoding: .utf8)
                     print("Data: \(utf8Text)")
+                    
+                    let jsonDecoder = JSONDecoder()
+                    do {
+                        let response = try jsonDecoder.decode(PublishResponse.self, from: data)
+                        
+                        /// В ответе клиенту отдается сообщение, которое имеет поле Path. Это поле содержит URL по которому методом PUT необходимо выполнить загрузку. Перед загрузкой необходимо сделать хэш sha512 и закодировать байт массив в base64 (без замены символов “/” и “+”). Результат нужно упаковать в строку вида:
+                        
+                        /// “base64;sha512;{полученный хэш}”.
+                        /// Пример:
+                        /// “base64;sha512;mLnMEO1f1+ox0Aom+a+clb9T2V9bVxAlVDl4vtaIUY8nLPtHUc3RXHCEQMdaxIFOLMrpdqGkbjSdoVVLStTCZg==”
+                        
+                        /// При запросе необходимо добавить два заголовка один их которых - это получившийся хэш:
+                        /// x-ms-blob-type: BlockBlob
+                        /// x-ms-meta-hash: base64;sha512;BR0anYfPZHNYQofX2pojuATumdKOziOmW3Ad0j7FNiNgM1zuPUPu9s7rQRDMFLvSQddrdwbQtj9nonHlKk8ggg==
+                        
+                        /// Ссылка будет рабочей 24 часа, после чего нужно запросить новую ссылку, в случае неудачи и повторять этот процесс до успешной загрузки большого сообщения.
+
+                        if let id = response.id, let path = response.path, let url = URL(string: path) {
+                            self.uploadLargeData(data, url: url, success: {
+                                self.confirmLarge(messageId: id, success: { (response) in
+                                    success(response)
+                                    
+                                }, failure: { (error) in
+                                    failure(error)
+                                    
+                                })
+                                
+                            }, failure: { (error) in
+                                failure(error)
+                            })
+                            
+                            
+                        } else {
+                            let error = SIOTError.make(description: "response.path is nil or can't get url from path", reason: nil)
+                            failure(error)
+                        }
+                        
+                        
+                    } catch (let err) {
+                        print(err.localizedDescription)
+                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        failure(err)
+                    }
+                    
+                } else {
+                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    failure(err)
+                    
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                failure(error as NSError)
+            }
+            
+        }
+        
+    }
+    
+    private func uploadLargeData(_ data: Data,
+                                 url: URL,
+                                 success: @escaping () -> Void,
+                                 failure: @escaping (_ error: NSError) -> Void) {
+        
+        let hash = data.digest(.sha512).base64EncodedString()
+        let hashResult = "base64;sha512;\(hash)"
+        
+        let headers: HTTPHeaders = [
+            "x-ms-blob-type": "BlockBlob",
+            "x-ms-meta-hash": hashResult
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.allHTTPHeaderFields = headers
+        request.httpBody = data
+        
+        
+        Alamofire.request(request).responseJSON { (response) in
+            
+            if let statusCode = response.response?.statusCode, statusCode == 201 {
+                success()
+            } else {
+                if let error = response.error {
+                    failure(error as NSError)
+                } else {
+                    let error = SIOTError.make(description: "Error while uploadLargeData", reason: nil)
+                    failure(error)
+                }
+            }
+            
+        }
+
+        
+    }
+    
+    private func confirmLarge(messageId: String,
+                              success: @escaping (_ response: PublishResponse) -> Void,
+                              failure: @escaping (_ error: NSError) -> Void) {
+        
+        guard let url = getConfirmLargeUrl(messageId: messageId) else {
+            let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
+            failure(err)
+            return
+        }
+        
+        manager.request(url, method: .put, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .success(_):
+                if let data = response.data {
+//                    let utf8Text = String(data: data, encoding: .utf8)
+//                    print("Data: \(utf8Text)")
                     
                     let jsonDecoder = JSONDecoder()
                     do {

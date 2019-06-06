@@ -27,10 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        }
         
-        siot.publishLarge(data: Data(), success: { (response) in
+        let imagePath = Bundle.main.path(forResource: "Icon-1024", ofType: "png")!
+        let imageUrl = URL(fileURLWithPath: imagePath)
+        let imageData = try! Data(contentsOf: imageUrl)
+        siot.publishLarge(data: imageData, success: { (response) in
+            
+            siot.getMessage(withMessgaeId: response.id!, success: { (response) in
+                print("")
+                
+            }, failure: { (error) in
+                print(error.localizedDescription)
+            })
+
             
         }) { (err) in
-            
+            print(err.localizedDescription)
             
         }
         

@@ -14,6 +14,7 @@
 		5C41A22B22A665720097BC99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C41A22922A665720097BC99 /* LaunchScreen.storyboard */; };
 		5C41A23622A665730097BC99 /* StoryIotDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A23522A665730097BC99 /* StoryIotDemoTests.swift */; };
 		5C41A24222A6675E0097BC99 /* AuthCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C41A24122A6675E0097BC99 /* AuthCredentials.plist */; };
+		5C66EE2922A94D5A00C348BE /* Icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C66EE2822A94D5A00C348BE /* Icon-1024.png */; };
 		5E34B46A9BFE865FA226E70F /* Pods_StoryIotDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2D68357C689F4A2E2B088A /* Pods_StoryIotDemoTests.framework */; };
 		D85881E270EB4EA4C86E48D9 /* Pods_StoryIotDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084C423C3DEA0F1466C745DC /* Pods_StoryIotDemo.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		5C41A23522A665730097BC99 /* StoryIotDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryIotDemoTests.swift; sourceTree = "<group>"; };
 		5C41A23722A665730097BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C41A24122A6675E0097BC99 /* AuthCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AuthCredentials.plist; sourceTree = "<group>"; };
+		5C66EE2822A94D5A00C348BE /* Icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-1024.png"; sourceTree = "<group>"; };
 		67D02BFBFA35168D835BD3C7 /* Pods-StoryIotDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIotDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-StoryIotDemoTests/Pods-StoryIotDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		694C965A7B9F3BC1A139D8D9 /* Pods-StoryIotDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIotDemoTests.release.xcconfig"; path = "Target Support Files/Pods-StoryIotDemoTests/Pods-StoryIotDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7EFAE58615B69C2D8882E240 /* Pods-StoryIotDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIotDemo.release.xcconfig"; path = "Target Support Files/Pods-StoryIotDemo/Pods-StoryIotDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				5C41A22422A6656F0097BC99 /* Main.storyboard */,
 				5C41A22722A665720097BC99 /* Assets.xcassets */,
 				5C41A22922A665720097BC99 /* LaunchScreen.storyboard */,
+				5C66EE2822A94D5A00C348BE /* Icon-1024.png */,
 				5C41A24122A6675E0097BC99 /* AuthCredentials.plist */,
 				5C41A22C22A665720097BC99 /* Info.plist */,
 			);
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C41A22B22A665720097BC99 /* LaunchScreen.storyboard in Resources */,
+				5C66EE2922A94D5A00C348BE /* Icon-1024.png in Resources */,
 				5C41A22822A665720097BC99 /* Assets.xcassets in Resources */,
 				5C41A22622A6656F0097BC99 /* Main.storyboard in Resources */,
 				5C41A24222A6675E0097BC99 /* AuthCredentials.plist in Resources */,

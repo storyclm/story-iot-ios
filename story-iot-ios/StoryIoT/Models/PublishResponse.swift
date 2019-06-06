@@ -10,13 +10,13 @@ import Foundation
 
 // MARK: - PublishResponse
 public struct PublishResponse: Codable {
-    let path: String?
-    let topic: String?
-    let metadata: Metadata?
-    let hash: String?
-    let lenght: Int?
-    let id: String?
-    let ticks: Double?
+    public let path: String?
+    public let topic: String?
+    public let metadata: Metadata?
+    public let hash: String?
+    public let lenght: Int?
+    public let id: String?
+    public let ticks: Double?
     
     enum CodingKeys: String, CodingKey {
         case path = "Path"
