@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import CoreLocation
 
 let timeoutInterval: TimeInterval = 120
 
@@ -160,7 +161,11 @@ public class StoryIoT {
     
     // MARK: - Publish
     
-    public func publishSmall(body: [String: String],
+    public func publishSmall(body: [String: Any],
+                             eventId: String?,
+                             userId: String?,
+                             entityId: String?,
+                             location: CLLocation?,
                              success: @escaping (_ response: PublishResponse) -> Void,
                              failure: @escaping (_ error: NSError) -> Void) {
         
@@ -171,7 +176,7 @@ public class StoryIoT {
         }
         
     
-        let metadata = Metadata()
+        let metadata = Metadata(eventId: eventId, userId: userId, entityId: entityId, location: location)
         var headers: HTTPHeaders = metadata.asDictionary()
         headers["Content-Type"] = "application/json"
         
@@ -229,6 +234,10 @@ public class StoryIoT {
     /// Издатель публикует сообщение в конечную точку с пустым телом. Если авторизация и валидация сообщения прошла успешно, сервер присваивает сообщению уникальный идентификатор, извлекает метаданные из сообщения и создает пустой объект в хранилище сообщений. Это сообщение не будет видно в ленте.
 
     public func publishLarge(data: Data,
+                             eventId: String,
+                             userId: String,
+                             entityId: String?,
+                             location: CLLocation?,
                              success: @escaping (_ response: PublishResponse) -> Void,
                              failure: @escaping (_ error: NSError) -> Void) {
         
@@ -239,7 +248,7 @@ public class StoryIoT {
         }
         
         
-        let metadata = Metadata()
+        let metadata = Metadata(eventId: eventId, userId: userId, entityId: entityId, location: location)
         var headers: HTTPHeaders = metadata.asDictionary()
         headers["Content-Type"] = "application/json"
         
