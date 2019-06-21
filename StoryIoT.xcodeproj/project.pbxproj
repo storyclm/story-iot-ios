@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0DC13E22BCE8BB0092A9DF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC13D22BCE8BB0092A9DF /* LICENSE */; };
 		5C41A1D822A647AA0097BC99 /* StoryIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C41A1CE22A647AA0097BC99 /* StoryIoT.framework */; };
 		5C41A1DD22A647AA0097BC99 /* StoryIoTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A1DC22A647AA0097BC99 /* StoryIoTTests.swift */; };
 		5C41A1DF22A647AA0097BC99 /* StoryIoT.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C41A1D122A647AA0097BC99 /* StoryIoT.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		055F2B5CC6714418724A859F /* Pods_StoryIoTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoryIoTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3004CA1B40FF0EA824D53E93 /* Pods-StoryIoT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIoT.debug.xcconfig"; path = "Target Support Files/Pods-StoryIoT/Pods-StoryIoT.debug.xcconfig"; sourceTree = "<group>"; };
+		5C0DC13D22BCE8BB0092A9DF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5C41A1CE22A647AA0097BC99 /* StoryIoT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StoryIoT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C41A1D122A647AA0097BC99 /* StoryIoT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryIoT.h; sourceTree = "<group>"; };
 		5C41A1D222A647AA0097BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		5C41A1C422A647AA0097BC99 = {
 			isa = PBXGroup;
 			children = (
+				5C0DC13D22BCE8BB0092A9DF /* LICENSE */,
 				5C41A1D022A647AA0097BC99 /* StoryIoT */,
 				5C41A1DB22A647AA0097BC99 /* StoryIoTTests */,
 				5C41A1CF22A647AA0097BC99 /* Products */,
@@ -261,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0DC13E22BCE8BB0092A9DF /* LICENSE in Resources */,
 				5C41A1E922A6489B0097BC99 /* StoryIoT.podspec in Resources */,
 				5C41A21222A663450097BC99 /* AuthCredentials.plist in Resources */,
 			);
