@@ -1,6 +1,0 @@
-framework module Pods_StoryIotDemoTests {
-  umbrella header "Pods-StoryIotDemoTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
