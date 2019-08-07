@@ -23,25 +23,25 @@ public class StoryIoT {
     private let authCredentials: AuthCredentials
     private let manager = Alamofire.SessionManager.default
     
-    public init(authCredentialsPlistName: String) {
-        guard let plistURL = Bundle.main.url(forResource: authCredentialsPlistName, withExtension: "plist"), let dict = NSDictionary(contentsOf: plistURL),
-            let endpoint = dict["endpoint"] as? String,
-            let hub = dict["hub"] as? String,
-            let key = dict["key"] as? String,
-            let secret = dict["secret"] as? String,
-            let expirationTimeInterval = dict["expirationTimeInterval"] as? TimeInterval else {
-                
-                fatalError("You don't have AuthCredentials.plist or it has wrong data")
+    public init(credentials: String) {
+        let items = credentials.components(separatedBy: "=")
+        if items.count == 5 {
+            let endpoint = items[0]
+            let hub = items[1]
+            let key = items[2]
+            let secret = items[3]
+            var expirationTimeInterval: TimeInterval = 180
+            if let timeInterval = TimeInterval(items[4]) {
+                expirationTimeInterval = timeInterval
+            }
+            
+            authCredentials = AuthCredentials(endpoint: endpoint, hub: hub, key: key, secret: secret, expirationTimeInterval: expirationTimeInterval)
+        } else {
+            fatalError("Credentials string has wrong format")
         }
-        
-        authCredentials = AuthCredentials(endpoint: endpoint, hub: hub, key: key, secret: secret, expirationTimeInterval: expirationTimeInterval)
-        
+
         manager.session.configuration.timeoutIntervalForRequest = timeoutInterval
         
-    }
-    
-    public func fo() {
-        print("fo")
     }
     
     // MARK: - Auth
