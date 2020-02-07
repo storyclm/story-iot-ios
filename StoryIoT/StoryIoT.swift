@@ -153,7 +153,7 @@ public class StoryIoT {
                              eventId: String?,
                              userId: String?,
                              entityId: String?,
-                             location: CLLocation?,
+                             coordinate: CLLocationCoordinate2D?,
                              success: @escaping (_ response: PublishResponse) -> Void,
                              failure: @escaping (_ error: NSError) -> Void) {
         
@@ -164,7 +164,7 @@ public class StoryIoT {
         }
         
     
-        let metadata = Metadata(eventId: eventId, userId: userId, entityId: entityId, location: location)
+        let metadata = Metadata(eventId: eventId, userId: userId, entityId: entityId, coordinate: coordinate)
         var headers: HTTPHeaders = metadata.asDictionary()
         headers["Content-Type"] = "application/json"
         
@@ -225,7 +225,7 @@ public class StoryIoT {
                              eventId: String,
                              userId: String,
                              entityId: String?,
-                             location: CLLocation?,
+                             coordinate: CLLocationCoordinate2D?,
                              success: @escaping (_ response: PublishResponse) -> Void,
                              failure: @escaping (_ error: NSError) -> Void) {
         
@@ -236,7 +236,7 @@ public class StoryIoT {
         }
         
         
-        let metadata = Metadata(eventId: eventId, userId: userId, entityId: entityId, location: location)
+        let metadata = Metadata(eventId: eventId, userId: userId, entityId: entityId, coordinate: coordinate)
         var headers: HTTPHeaders = metadata.asDictionary()
         headers["Content-Type"] = "application/json"
         

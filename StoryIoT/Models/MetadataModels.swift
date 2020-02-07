@@ -46,13 +46,13 @@ public struct Metadata: Codable {
     var mt: String?
     
 
-    init(eventId: String?, userId: String?, entityId: String?, location: CLLocation?) {
+    init(eventId: String?, userId: String?, entityId: String?, coordinate: CLLocationCoordinate2D?) {
         self.eid = eventId
         self.uid = userId
         self.id = entityId
         
-        if let location = location {
-            self.geo = "on;\(location.coordinate.latitude),\(location.coordinate.longitude)"
+        if let coordinate = coordinate {
+            self.geo = "on;\(coordinate.latitude),\(coordinate.longitude)"
         } else {
             self.geo = "off"
         }
