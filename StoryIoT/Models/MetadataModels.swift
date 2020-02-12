@@ -55,7 +55,7 @@ public struct Metadata: Codable {
 
         self.cud = message.operationType?.rawValue
         self.lng = message.language
-        self.lt = self.timeString(from: message.create)
+        self.lt = self.timeString(from: message.created)
         self.geo = self.geoString(from: message.coordinate)
         self.ns = message.networkStatus
     }
