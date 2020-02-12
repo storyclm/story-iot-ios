@@ -36,28 +36,30 @@ public struct Metadata: Codable {
     /// AppVersion. Название приложения. Пример: “0.1.1”.
     var av: String? = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String
     /// локальное время в формате ISO 8601. Время возникновения события на устройстве. Пример: “2020-05-28T09:02:49.5754586” без часового пояса и без “Z”.
-    var lt: String? = ISO8601DateFormatter.init().string(from: Date())
+    var lt: String?
     /// Time Zone. Часовой пояс. Пример: “+3”.
     var tz: String? = String(TimeZone.current.secondsFromGMT() / 3600)
     /// геолокация. Если включена. Пример: “on;-34.8799074,174.7565664” или “off”.
     var geo: String?
-    
+    /// статус сети, как устройство подключено к сети(wifi, bt, lan ...);
+    var ns: String?
+
+    var lng: String?
     var ip: String?
     var mt: String?
-    
 
-    init(eventId: String?, userId: String?, entityId: String?, coordinate: CLLocationCoordinate2D?) {
-        self.eid = eventId
-        self.uid = userId
-        self.id = entityId
-        
-        if let coordinate = coordinate {
-            self.geo = "on;\(coordinate.latitude),\(coordinate.longitude)"
-        } else {
-            self.geo = "off"
-        }
+    init(message: SIOTMessageModel) {
+        self.eid = message.eventId
+        self.uid = message.userId
+        self.id = message.entityId
+
+        self.cud = message.operationType?.rawValue
+        self.lng = message.language
+        self.lt = self.timeString(from: message.create)
+        self.geo = self.geoString(from: message.coordinate)
+        self.ns = message.networkStatus
     }
-    
+
     func asDictionary() -> [String: String] {
         var dict = [String: String]()
         if let eid = eid { dict["s-m-eid"] = eid }
@@ -75,8 +77,26 @@ public struct Metadata: Codable {
         if let lt = lt { dict["s-m-lt"] = lt }
         if let tz = tz { dict["s-m-tz"] = tz }
         if let geo = geo { dict["s-m-geo"] = geo }
+        if let lng = lng { dict["s-m-lng"] = lng}
+        if let ns = ns { dict["s-m-ns"] = ns }
         
         return dict
+    }
+
+    // MARK: - Helpers
+
+    private func timeString(from date: Date?) -> String? {
+        guard let date = date else { return nil }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS"
+        return dateFormatter.string(from: date)
+    }
+
+    private func geoString(from coordinate: CLLocationCoordinate2D?) -> String {
+        guard let coordinate = coordinate else { return "off" }
+
+        return "on;\(coordinate.latitude),\(coordinate.longitude)"
     }
     
 }
