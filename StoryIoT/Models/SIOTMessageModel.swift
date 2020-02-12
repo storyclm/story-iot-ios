@@ -44,7 +44,7 @@ public class SIOTMessageModel {
 
     public var coordinate: CLLocationCoordinate2D?
 
-    public var create: Date?
+    public var created: Date?
 
     var body: BodyModel
 
