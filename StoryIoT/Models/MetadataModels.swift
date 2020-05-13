@@ -11,7 +11,7 @@ import UIKit
 import CoreLocation
 
 public struct Metadata: Codable {
-    ///EventId. Поле определяет тип события. Должен быть ассоциирован с конкретной моделью. Пример: clm.session.
+    /// EventId. Поле определяет тип события. Должен быть ассоциирован с конкретной моделью. Пример: clm.session.
     var eid: String?
     /// DeviceId. Идентификатор устройства, если поддерживается устройством. Пример: FDF5DA02-419E-465E-ADA6-A26B87097627.
     var did: String? = UIDevice.current.identifierForVendor?.uuidString
@@ -77,9 +77,9 @@ public struct Metadata: Codable {
         if let lt = lt { dict["s-m-lt"] = lt }
         if let tz = tz { dict["s-m-tz"] = tz }
         if let geo = geo { dict["s-m-geo"] = geo }
-        if let lng = lng { dict["s-m-lng"] = lng}
+        if let lng = lng { dict["s-m-lng"] = lng }
         if let ns = ns { dict["s-m-ns"] = ns }
-        
+
         return dict
     }
 
@@ -98,7 +98,4 @@ public struct Metadata: Codable {
 
         return "on;\(coordinate.latitude),\(coordinate.longitude)"
     }
-    
 }
-
-

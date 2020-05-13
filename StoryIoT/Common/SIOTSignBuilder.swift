@@ -34,9 +34,9 @@ public final class SIOTSignBuilder {
     ///
     /// ZQ6Zxtuy9DGhHjneAepq8NJovZMW0KLNwffhND_-ng1xuxFJSclYcpGUJSGxniM8IqV6nhWdWclsIdTE2n6X2Q==
     ///
-    
+
     public func result() -> String? {
-        let valuesStrings: [String] = values.map { "\($0.key)=\($0.value)"}
+        let valuesStrings: [String] = values.map { "\($0.key)=\($0.value)" }
         let input = valuesStrings.reduce("") { $0 + $1 }
 
         if let hmac = input.data(using: String.Encoding.utf8)?.digest(.sha512, key: self.privateKey) {

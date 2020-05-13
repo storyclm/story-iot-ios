@@ -12,8 +12,8 @@ import CoreLocation
 public class SIOTMessageModel {
 
     enum BodyModel {
-        case json ([String: Any])
-        case data (Data)
+        case json([String: Any])
+        case data(Data)
     }
 
     public enum OperationType: String {

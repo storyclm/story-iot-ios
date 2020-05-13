@@ -8,10 +8,18 @@
 
 import Foundation
 
-struct AuthCredentials {
+public struct AuthCredentials {
     let endpoint: String
     let hub: String
     let key: String
     let secret: String
     let expirationTimeInterval: TimeInterval
+
+    public init(endpoint: String, hub: String, key: String, secret: String, expiration: TimeInterval = 180) {
+        self.endpoint = endpoint
+        self.hub = hub
+        self.key = key
+        self.secret = secret
+        self.expirationTimeInterval = expiration
+    }
 }
