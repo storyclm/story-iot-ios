@@ -1,5 +1,5 @@
 //
-//  AuthCredentials.swift
+//  SIOTAuthCredentials.swift
 //  StoryIoT
 //
 //  Created by Oleksandr Yolkin on 6/4/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AuthCredentials {
+public struct SIOTAuthCredentials {
     let endpoint: String
     let hub: String
     let key: String

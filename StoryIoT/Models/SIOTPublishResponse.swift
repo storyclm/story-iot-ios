@@ -1,5 +1,5 @@
 //
-//  PublishResponse.swift
+//  SIOTPublishResponse.swift
 //  StoryIoT
 //
 //  Created by Oleksandr Yolkin on 6/5/19.
@@ -10,10 +10,10 @@ import Foundation
 
 // MARK: - PublishResponse
 
-public struct PublishResponse: Codable {
+public struct SIOTPublishResponse: Codable {
     public let path: String?
     public let topic: String?
-    public let metadata: Metadata?
+    public let metadata: SIOTMetadataModel?
     public let hash: String?
     public let lenght: Int?
     public let id: String?

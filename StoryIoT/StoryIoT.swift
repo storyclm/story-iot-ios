@@ -12,17 +12,17 @@ import CoreLocation
 
 let timeoutInterval: TimeInterval = 120
 
-public enum FeedDirection: String {
+public enum SIOTFeedDirection: String {
     case forward
     case backward
 }
 
 public class StoryIoT {
 
-    private let authCredentials: AuthCredentials
+    private let authCredentials: SIOTAuthCredentials
     private let manager = Alamofire.SessionManager.default
 
-    public init(credentials: AuthCredentials) {
+    public init(credentials: SIOTAuthCredentials) {
         self.authCredentials = credentials
 
         manager.session.configuration.timeoutIntervalForRequest = timeoutInterval
@@ -91,7 +91,7 @@ public class StoryIoT {
     }
 
     private func getFeedRequestUrl(token: String?,
-                                   direction: FeedDirection,
+                                   direction: SIOTFeedDirection,
                                    size: Int) -> URL? {
 
         let expirationString = ISO8601DateFormatter().string(from: Date(timeIntervalSinceNow: authCredentials.expirationTimeInterval))
@@ -123,7 +123,7 @@ public class StoryIoT {
 
     // MARK: - Publish
 
-    public func publishSmall(message: SIOTMessageModel, success: @escaping (_ response: PublishResponse) -> Void, failure: @escaping (_ error: NSError) -> Void) {
+    public func publishSmall(message: SIOTMessageModel, success: @escaping (_ response: SIOTPublishResponse) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         guard let url = publishRequestUrl() else {
             let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
             failure(err)
@@ -136,7 +136,7 @@ public class StoryIoT {
             return
         }
 
-        let metadata = Metadata(message: message)
+        let metadata = SIOTMetadataModel(message: message)
         var headers: HTTPHeaders = metadata.asDictionary()
         headers["Content-Type"] = "application/json"
 
@@ -158,16 +158,16 @@ public class StoryIoT {
             case .success:
                 if let data = response.data {
                     do {
-                        let response = try JSONDecoder().decode(PublishResponse.self, from: data)
+                        let response = try JSONDecoder().decode(SIOTPublishResponse.self, from: data)
                         success(response)
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
@@ -184,7 +184,7 @@ public class StoryIoT {
     /// Публикация сообщения возможна только по протоколу HTTPS. Процесс выглядит следующим образом:
     /// Издатель публикует сообщение в конечную точку с пустым телом. Если авторизация и валидация сообщения прошла успешно, сервер присваивает сообщению уникальный идентификатор, извлекает метаданные из сообщения и создает пустой объект в хранилище сообщений. Это сообщение не будет видно в ленте.
 
-    public func publishLarge(message: SIOTMessageModel, success: @escaping (_ response: PublishResponse) -> Void, failure: @escaping (_ error: NSError) -> Void) {
+    public func publishLarge(message: SIOTMessageModel, success: @escaping (_ response: SIOTPublishResponse) -> Void, failure: @escaping (_ error: NSError) -> Void) {
 
         guard let url = publishRequestUrl() else {
             let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
@@ -198,7 +198,7 @@ public class StoryIoT {
             return
         }
 
-        let metadata = Metadata(message: message)
+        let metadata = SIOTMetadataModel(message: message)
         var headers: HTTPHeaders = metadata.asDictionary()
         headers["Content-Type"] = "application/json"
 
@@ -216,7 +216,7 @@ public class StoryIoT {
                     print("Data: \(String(describing: utf8Text))")
 
                     do {
-                        let response = try JSONDecoder().decode(PublishResponse.self, from: data)
+                        let response = try JSONDecoder().decode(SIOTPublishResponse.self, from: data)
 
                         /// В ответе клиенту отдается сообщение, которое имеет поле Path. Это поле содержит URL по которому методом PUT необходимо выполнить загрузку. Перед загрузкой необходимо сделать хэш sha512 и закодировать байт массив в base64 (без замены символов “/” и “+”). Результат нужно упаковать в строку вида:
 
@@ -251,12 +251,12 @@ public class StoryIoT {
 
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
@@ -300,7 +300,7 @@ public class StoryIoT {
     }
 
     private func confirmLarge(messageId: String,
-                              success: @escaping (_ response: PublishResponse) -> Void,
+                              success: @escaping (_ response: SIOTPublishResponse) -> Void,
                               failure: @escaping (_ error: NSError) -> Void) {
 
         guard let url = getConfirmLargeUrl(messageId: messageId) else {
@@ -317,16 +317,16 @@ public class StoryIoT {
                 if let data = response.data {
                     let jsonDecoder = JSONDecoder()
                     do {
-                        let response = try jsonDecoder.decode(PublishResponse.self, from: data)
+                        let response = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(response)
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
@@ -342,7 +342,7 @@ public class StoryIoT {
     /// Хранилище сообщений позволяет получать сообщение по идентификатору и управлять его мета данными.
     ///
     public func getMessage(withMessgaeId messageId: String,
-                           success: @escaping (_ response: PublishResponse) -> Void,
+                           success: @escaping (_ response: SIOTPublishResponse) -> Void,
                            failure: @escaping (_ error: NSError) -> Void) {
 
         guard let url = getStorageRequestUrl(withMessageId: messageId) else {
@@ -359,16 +359,16 @@ public class StoryIoT {
                 if let data = response.data {
                     let jsonDecoder = JSONDecoder()
                     do {
-                        let response = try jsonDecoder.decode(PublishResponse.self, from: data)
+                        let response = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(response)
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
@@ -384,7 +384,7 @@ public class StoryIoT {
     public func updateMeta(metaName: String,
                            withNewValue newValue: String,
                            inMessageWithId messageId: String,
-                           success: @escaping (_ response: PublishResponse) -> Void,
+                           success: @escaping (_ response: SIOTPublishResponse) -> Void,
                            failure: @escaping (_ error: NSError) -> Void) {
 
         guard let url = updateStorageRequestUrl(withMessageId: messageId, metaName: metaName) else {
@@ -410,16 +410,16 @@ public class StoryIoT {
                 if let data = response.data {
                     let jsonDecoder = JSONDecoder()
                     do {
-                        let response = try jsonDecoder.decode(PublishResponse.self, from: data)
+                        let response = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(response)
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
@@ -433,7 +433,7 @@ public class StoryIoT {
     /// Для того, чтобы удалить метаданные необходимо использовать метод DELETE и указать название поля которое надо удалить. Если поле существует то оно будет удалено иначе операция будет проигнорирована без возникновения ошибки.
     ///
     public func deleteMeta(metaName: String, inMessageWithId messageId: String,
-                           success: @escaping (_ response: PublishResponse) -> Void,
+                           success: @escaping (_ response: SIOTPublishResponse) -> Void,
                            failure: @escaping (_ error: NSError) -> Void) {
 
         guard let url = deleteStorageRequestUrl(withMessageId: messageId, metaName: metaName) else {
@@ -453,16 +453,16 @@ public class StoryIoT {
 
                     let jsonDecoder = JSONDecoder()
                     do {
-                        let response = try jsonDecoder.decode(PublishResponse.self, from: data)
+                        let response = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(response)
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
@@ -486,9 +486,9 @@ public class StoryIoT {
     /// Токен продолжения можно сохранять и в любой момент продолжить получать новые сообщения для обработки.
 
     public func getFeed(token: String?,
-                        direction: FeedDirection,
+                        direction: SIOTFeedDirection,
                         size: Int,
-                        success: @escaping (_ response: [PublishResponse], _ token: String?) -> Void,
+                        success: @escaping (_ response: [SIOTPublishResponse], _ token: String?) -> Void,
                         failure: @escaping (_ error: NSError) -> Void) {
 
         guard let url = getFeedRequestUrl(token: token, direction: direction, size: size) else {
@@ -510,16 +510,16 @@ public class StoryIoT {
 
                     let jsonDecoder = JSONDecoder()
                     do {
-                        let response = try jsonDecoder.decode([PublishResponse].self, from: data)
+                        let response = try jsonDecoder.decode([SIOTPublishResponse].self, from: data)
                         success(response, token)
                     } catch (let err) {
                         print(err.localizedDescription)
-                        let err = SIOTError.make(description: "Can't decode PublishResponse data", reason: nil)
+                        let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err)
                     }
 
                 } else {
-                    let err = SIOTError.make(description: "PublishResponse data is nil", reason: nil)
+                    let err = SIOTError.make(description: "SIOTPublishResponse data is nil", reason: nil)
                     failure(err)
                 }
 
