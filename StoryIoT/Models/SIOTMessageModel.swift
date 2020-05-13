@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import Alamofire
 
 public class SIOTMessageModel {
 
@@ -38,8 +39,12 @@ public class SIOTMessageModel {
     public var operationType: OperationType?
 
     /// Статус сети, как устройство подключено к сети(wifi, bt, lan ...);
+    /// Во время инициализации присваивается одно из трех значений: _none_, _Cellular_, _Wi-Fi_
     public var networkStatus: String?
 
+    /// Язык приложения
+    ///
+    /// Во врменя инициализации выставляется язык приложение: `Locale.current.languageCode`
     public var language: String?
 
     public var coordinate: CLLocationCoordinate2D?
@@ -52,9 +57,38 @@ public class SIOTMessageModel {
 
     public init(body: [String: Any]) {
         self.body = BodyModel.json(body)
+        self.setup()
     }
 
     public init(data: Data) {
         self.body = BodyModel.data(data)
+        self.setup()
+    }
+
+    private func setup() {
+        self.networkStatus = self.appNetworkStatus()
+        self.language = self.appLanguage
+    }
+}
+
+extension SIOTMessageModel {
+    private var appLanguage: String? {
+        return Locale.current.languageCode
+    }
+
+    private func appNetworkStatus() -> String {
+        guard let reachabilityManager = NetworkReachabilityManager() else { return "none" }
+
+        let status = reachabilityManager.networkReachabilityStatus
+        if case let NetworkReachabilityManager.NetworkReachabilityStatus.reachable(type) = status {
+            switch type {
+            case .wwan:
+                return "Cellular"
+            case .ethernetOrWiFi:
+                return "Wi-Fi"
+            }
+        } else {
+            return "none"
+        }
     }
 }
