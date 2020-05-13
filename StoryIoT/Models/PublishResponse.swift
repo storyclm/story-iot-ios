@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - PublishResponse
+
 public struct PublishResponse: Codable {
     public let path: String?
     public let topic: String?
@@ -17,7 +18,7 @@ public struct PublishResponse: Codable {
     public let lenght: Int?
     public let id: String?
     public let ticks: Double?
-    
+
     enum CodingKeys: String, CodingKey {
         case path = "Path"
         case topic = "Topic"
@@ -27,6 +28,4 @@ public struct PublishResponse: Codable {
         case id = "Id"
         case ticks = "Ticks"
     }
-    
 }
-

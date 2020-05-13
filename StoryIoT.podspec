@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "StoryIoT"
-  s.version      = "1.0.0"
+  s.version      = "1.3.1"
   s.summary      = "StoryIoT"
 
   # This description is used to generate tags and improve search results.
