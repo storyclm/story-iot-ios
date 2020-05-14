@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1B089BA623E9A5FA00758920 /* SIOTSignBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B089BA523E9A5FA00758920 /* SIOTSignBuilder.swift */; };
+		1B356BA4246DDD0200B2C1FE /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356BA3246DDD0100B2C1FE /* testImage.png */; };
 		1BA92FF823F42C47006FF042 /* SIOTMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */; };
 		5C0DC13E22BCE8BB0092A9DF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC13D22BCE8BB0092A9DF /* LICENSE */; };
 		5C41A1D822A647AA0097BC99 /* StoryIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C41A1CE22A647AA0097BC99 /* StoryIoT.framework */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		055F2B5CC6714418724A859F /* Pods_StoryIoTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoryIoTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B089BA523E9A5FA00758920 /* SIOTSignBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTSignBuilder.swift; sourceTree = "<group>"; };
+		1B356BA3246DDD0100B2C1FE /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTMessageModel.swift; sourceTree = "<group>"; };
 		3004CA1B40FF0EA824D53E93 /* Pods-StoryIoT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIoT.debug.xcconfig"; path = "Target Support Files/Pods-StoryIoT/Pods-StoryIoT.debug.xcconfig"; sourceTree = "<group>"; };
 		5C0DC13D22BCE8BB0092A9DF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5C41A1DC22A647AA0097BC99 /* StoryIoTTests.swift */,
+				1B356BA3246DDD0100B2C1FE /* testImage.png */,
 				5C41A1DE22A647AA0097BC99 /* Info.plist */,
 			);
 			path = StoryIoTTests;
@@ -225,6 +228,7 @@
 				5C41A1D322A647AA0097BC99 /* Sources */,
 				5C41A1D422A647AA0097BC99 /* Frameworks */,
 				5C41A1D522A647AA0097BC99 /* Resources */,
+				DA613870E36377BDCDBA3EA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C41A21322A664040097BC99 /* AuthCredentials.plist in Resources */,
+				1B356BA4246DDD0200B2C1FE /* testImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +342,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA613870E36377BDCDBA3EA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StoryIoTTests/Pods-StoryIoTTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StoryIoTTests/Pods-StoryIoTTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StoryIoTTests/Pods-StoryIoTTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
