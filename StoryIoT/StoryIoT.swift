@@ -28,6 +28,26 @@ public class StoryIoT {
         manager.session.configuration.timeoutIntervalForRequest = timeoutInterval
     }
 
+    public init?(raw input: String) {
+        let items = input.components(separatedBy: "=")
+        guard items.count > 4 else { return nil }
+
+        let endpoint = items[0]
+        let hub = items[1]
+        let key = items[2]
+        let secret = items[3]
+        var expirationTimeInterval: TimeInterval = 180
+
+        if items.count > 5 {
+            if let timeInterval = TimeInterval(items[4]) {
+                expirationTimeInterval = timeInterval
+            }
+        }
+        self.authCredentials = SIOTAuthCredentials(endpoint: endpoint, hub: hub, key: key, secret: secret, expiration: expirationTimeInterval)
+
+        manager.session.configuration.timeoutIntervalForRequest = timeoutInterval
+    }
+
     // MARK: - Auth
 
     private func buildSignature(expiration: String) -> String? {

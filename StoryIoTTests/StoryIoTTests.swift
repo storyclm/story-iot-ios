@@ -23,6 +23,23 @@ class StoryIoTTests: XCTestCase {
         }
     }
 
+    func testRawInit() {
+        let expectation = self.expectation(description: "StoryIoT.RawInit")
+
+        guard nil != StoryIoT(raw: "https://staging-iot.storychannels.app=b47bbc659eb344888f9f92ed3261d8dc=df94b12c3355425eb4efa406f09e8b9f=163af6783ae14d5f829288d1ca44950e=180") else {
+            XCTFail("\(expectation.description) - Init failed")
+            return
+        }
+
+        expectation.fulfill()
+        
+        self.waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("\(expectation.description) - \(error.localizedDescription)")
+            }
+        }
+    }
+
     func testPublishSmall() {
 
         let expectation = self.expectation(description: "StoryIoT.PublishSmall")
@@ -54,7 +71,7 @@ class StoryIoTTests: XCTestCase {
     func testPublishLarge() {
         let expectation = self.expectation(description: "StoryIoT.PublishLarge")
 
-        guard let data = self.testImageData() else {
+        guard let data = self.blankImageData() else {
             XCTFail("Error converting testImage.png to Data")
             return
         }
@@ -94,12 +111,12 @@ class StoryIoTTests: XCTestCase {
         return SIOTAuthCredentials(endpoint: endpoint, hub: hub, key: key, secret: secret, expiration: expiration)
     }
 
-    private func testImageData() -> Data? {
+    private func blankImageData() -> Data? {
         guard let imageURL = Bundle(for: type(of: self)).url(forResource: "testImage", withExtension: "png"), let data = try? Data(contentsOf: imageURL) else { return nil }
         return data
     }
 
-    func randomTestUUID() -> String {
+    private func randomTestUUID() -> String {
         return "test.\(UUID().uuidString)"
     }
 }
