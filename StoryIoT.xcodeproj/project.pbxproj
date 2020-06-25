@@ -3,24 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1B089BA623E9A5FA00758920 /* SIOTSignBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B089BA523E9A5FA00758920 /* SIOTSignBuilder.swift */; };
+		1B356BA4246DDD0200B2C1FE /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356BA3246DDD0100B2C1FE /* testImage.png */; };
 		1BA92FF823F42C47006FF042 /* SIOTMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */; };
 		5C0DC13E22BCE8BB0092A9DF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC13D22BCE8BB0092A9DF /* LICENSE */; };
 		5C41A1D822A647AA0097BC99 /* StoryIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C41A1CE22A647AA0097BC99 /* StoryIoT.framework */; };
 		5C41A1DD22A647AA0097BC99 /* StoryIoTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A1DC22A647AA0097BC99 /* StoryIoTTests.swift */; };
 		5C41A1DF22A647AA0097BC99 /* StoryIoT.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C41A1D122A647AA0097BC99 /* StoryIoT.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C41A1E922A6489B0097BC99 /* story-iot-ios.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5C41A1E822A6489B0097BC99 /* story-iot-ios.podspec */; };
+		5C41A1E922A6489B0097BC99 /* StoryIoT.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5C41A1E822A6489B0097BC99 /* StoryIoT.podspec */; };
 		5C41A20922A64A1E0097BC99 /* StoryIoT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A20822A64A1E0097BC99 /* StoryIoT.swift */; };
-		5C41A20E22A64C5F0097BC99 /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A20D22A64C5F0097BC99 /* AuthCredentials.swift */; };
+		5C41A20E22A64C5F0097BC99 /* SIOTAuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A20D22A64C5F0097BC99 /* SIOTAuthCredentials.swift */; };
 		5C41A21222A663450097BC99 /* AuthCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C41A21122A663450097BC99 /* AuthCredentials.plist */; };
 		5C41A21322A664040097BC99 /* AuthCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C41A21122A663450097BC99 /* AuthCredentials.plist */; };
 		5C41A24822A67C410097BC99 /* SwiftCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A24722A67C410097BC99 /* SwiftCrypto.swift */; };
-		5C41A24B22A6964A0097BC99 /* MetadataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A24A22A6964A0097BC99 /* MetadataModels.swift */; };
-		5C41A24D22A7A04E0097BC99 /* PublishResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A24C22A7A04E0097BC99 /* PublishResponse.swift */; };
+		5C41A24B22A6964A0097BC99 /* SIOTMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A24A22A6964A0097BC99 /* SIOTMetadataModel.swift */; };
+		5C41A24D22A7A04E0097BC99 /* SIOTPublishResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A24C22A7A04E0097BC99 /* SIOTPublishResponse.swift */; };
 		5C41A25022A7A1AA0097BC99 /* SIOTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41A24F22A7A1AA0097BC99 /* SIOTError.swift */; };
 		7CC7E695852C4A23D9AC2531 /* Pods_StoryIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9383E9D2D182B789897CEF /* Pods_StoryIoT.framework */; };
 		AB6C2639CC6993E26104D262 /* Pods_StoryIoTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055F2B5CC6714418724A859F /* Pods_StoryIoTTests.framework */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		055F2B5CC6714418724A859F /* Pods_StoryIoTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoryIoTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B089BA523E9A5FA00758920 /* SIOTSignBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTSignBuilder.swift; sourceTree = "<group>"; };
+		1B356BA3246DDD0100B2C1FE /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTMessageModel.swift; sourceTree = "<group>"; };
 		3004CA1B40FF0EA824D53E93 /* Pods-StoryIoT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIoT.debug.xcconfig"; path = "Target Support Files/Pods-StoryIoT/Pods-StoryIoT.debug.xcconfig"; sourceTree = "<group>"; };
 		5C0DC13D22BCE8BB0092A9DF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -48,13 +50,13 @@
 		5C41A1D722A647AA0097BC99 /* StoryIoTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoryIoTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C41A1DC22A647AA0097BC99 /* StoryIoTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryIoTTests.swift; sourceTree = "<group>"; };
 		5C41A1DE22A647AA0097BC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C41A1E822A6489B0097BC99 /* story-iot-ios.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "story-iot-ios.podspec"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5C41A1E822A6489B0097BC99 /* StoryIoT.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StoryIoT.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5C41A20822A64A1E0097BC99 /* StoryIoT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryIoT.swift; sourceTree = "<group>"; };
-		5C41A20D22A64C5F0097BC99 /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
+		5C41A20D22A64C5F0097BC99 /* SIOTAuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTAuthCredentials.swift; sourceTree = "<group>"; };
 		5C41A21122A663450097BC99 /* AuthCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AuthCredentials.plist; sourceTree = "<group>"; };
 		5C41A24722A67C410097BC99 /* SwiftCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCrypto.swift; sourceTree = "<group>"; };
-		5C41A24A22A6964A0097BC99 /* MetadataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataModels.swift; sourceTree = "<group>"; };
-		5C41A24C22A7A04E0097BC99 /* PublishResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishResponse.swift; sourceTree = "<group>"; };
+		5C41A24A22A6964A0097BC99 /* SIOTMetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTMetadataModel.swift; sourceTree = "<group>"; };
+		5C41A24C22A7A04E0097BC99 /* SIOTPublishResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTPublishResponse.swift; sourceTree = "<group>"; };
 		5C41A24F22A7A1AA0097BC99 /* SIOTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTError.swift; sourceTree = "<group>"; };
 		7B9383E9D2D182B789897CEF /* Pods_StoryIoT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoryIoT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA234FBD472A242624037CDA /* Pods-StoryIoT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIoT.release.xcconfig"; path = "Target Support Files/Pods-StoryIoT/Pods-StoryIoT.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,7 +142,7 @@
 				1B089BA423E9A5EB00758920 /* Common */,
 				5C41A24922A695F00097BC99 /* Libs */,
 				5C41A20822A64A1E0097BC99 /* StoryIoT.swift */,
-				5C41A1E822A6489B0097BC99 /* story-iot-ios.podspec */,
+				5C41A1E822A6489B0097BC99 /* StoryIoT.podspec */,
 				5C41A1D122A647AA0097BC99 /* StoryIoT.h */,
 				5C41A1D222A647AA0097BC99 /* Info.plist */,
 				5C41A21122A663450097BC99 /* AuthCredentials.plist */,
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5C41A1DC22A647AA0097BC99 /* StoryIoTTests.swift */,
+				1B356BA3246DDD0100B2C1FE /* testImage.png */,
 				5C41A1DE22A647AA0097BC99 /* Info.plist */,
 			);
 			path = StoryIoTTests;
@@ -160,9 +163,9 @@
 		5C41A20C22A64C400097BC99 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5C41A20D22A64C5F0097BC99 /* AuthCredentials.swift */,
-				5C41A24A22A6964A0097BC99 /* MetadataModels.swift */,
-				5C41A24C22A7A04E0097BC99 /* PublishResponse.swift */,
+				5C41A20D22A64C5F0097BC99 /* SIOTAuthCredentials.swift */,
+				5C41A24A22A6964A0097BC99 /* SIOTMetadataModel.swift */,
+				5C41A24C22A7A04E0097BC99 /* SIOTPublishResponse.swift */,
 				1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */,
 			);
 			path = Models;
@@ -225,6 +228,7 @@
 				5C41A1D322A647AA0097BC99 /* Sources */,
 				5C41A1D422A647AA0097BC99 /* Frameworks */,
 				5C41A1D522A647AA0097BC99 /* Resources */,
+				DA613870E36377BDCDBA3EA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,7 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C0DC13E22BCE8BB0092A9DF /* LICENSE in Resources */,
-				5C41A1E922A6489B0097BC99 /* story-iot-ios.podspec in Resources */,
+				5C41A1E922A6489B0097BC99 /* StoryIoT.podspec in Resources */,
 				5C41A21222A663450097BC99 /* AuthCredentials.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C41A21322A664040097BC99 /* AuthCredentials.plist in Resources */,
+				1B356BA4246DDD0200B2C1FE /* testImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +344,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DA613870E36377BDCDBA3EA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StoryIoTTests/Pods-StoryIoTTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StoryIoTTests/Pods-StoryIoTTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StoryIoTTests/Pods-StoryIoTTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,14 +368,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C41A24B22A6964A0097BC99 /* MetadataModels.swift in Sources */,
+				5C41A24B22A6964A0097BC99 /* SIOTMetadataModel.swift in Sources */,
 				1B089BA623E9A5FA00758920 /* SIOTSignBuilder.swift in Sources */,
 				5C41A25022A7A1AA0097BC99 /* SIOTError.swift in Sources */,
 				5C41A24822A67C410097BC99 /* SwiftCrypto.swift in Sources */,
-				5C41A20E22A64C5F0097BC99 /* AuthCredentials.swift in Sources */,
+				5C41A20E22A64C5F0097BC99 /* SIOTAuthCredentials.swift in Sources */,
 				5C41A20922A64A1E0097BC99 /* StoryIoT.swift in Sources */,
 				1BA92FF823F42C47006FF042 /* SIOTMessageModel.swift in Sources */,
-				5C41A24D22A7A04E0097BC99 /* PublishResponse.swift in Sources */,
+				5C41A24D22A7A04E0097BC99 /* SIOTPublishResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,7 +539,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.breffi.StoryIoT;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -546,7 +568,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.breffi.StoryIoT;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

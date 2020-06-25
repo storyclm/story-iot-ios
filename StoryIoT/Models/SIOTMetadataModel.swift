@@ -1,5 +1,5 @@
 //
-//  MetadataModels.swift
+//  SIOTMetadataModel.swift
 //  StoryIoT
 //
 //  Created by Oleksandr Yolkin on 6/4/19.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 
-public struct Metadata: Codable {
+public struct SIOTMetadataModel: Codable {
     /// EventId. Поле определяет тип события. Должен быть ассоциирован с конкретной моделью. Пример: clm.session.
     var eid: String?
     /// DeviceId. Идентификатор устройства, если поддерживается устройством. Пример: FDF5DA02-419E-465E-ADA6-A26B87097627.

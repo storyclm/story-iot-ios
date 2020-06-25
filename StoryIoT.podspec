@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "StoryIoT"
-  s.version      = "1.3.1"
+  s.version      = "1.5.0"
   s.summary      = "StoryIoT"
 
   # This description is used to generate tags and improve search results.
@@ -134,6 +134,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
+  s.swift_version = "5.0"
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
