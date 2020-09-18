@@ -3,7 +3,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 def my_pods
-  pod 'Alamofire', '4.8.1'
+  pod 'Alamofire', '~> 4.9'
 end
 
 target 'StoryIoT' do
@@ -12,5 +12,5 @@ end
 
 target 'StoryIoTTests' do
   inherit! :search_paths
-  pod 'Alamofire', '4.8.1'
+  my_pods
 end
