@@ -45,7 +45,8 @@ class StoryIoTTests: XCTestCase {
         let expectation = self.expectation(description: "StoryIoT.PublishSmall")
 
         let body: [String: Any] = [
-            "testKey": "testValue"
+            "testKey": "testValue",
+            "created": Date().iotServerTimeString(),
         ]
 
         let message = SIOTMessageModel(body: body)
@@ -55,9 +56,9 @@ class StoryIoTTests: XCTestCase {
         message.created = Date()
         message.operationType = (arc4random() % 2 == 0) ? .update : .create
 
-        self.storyIoT?.publishSmall(message: message, success: { response in
+        self.storyIoT?.publish(message: message, success: { response in
             expectation.fulfill()
-        }, failure: { error in
+        }, failure: { error, _ in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
         })
 
@@ -83,9 +84,9 @@ class StoryIoTTests: XCTestCase {
         message.created = Date()
         message.operationType = (arc4random() % 2 == 0) ? .update : .create
 
-        self.storyIoT?.publishLarge(message: message, success: { response in
+        self.storyIoT?.publish(message: message, success: { response in
             expectation.fulfill()
-        }, failure: { error in
+        }, failure: { error, _ in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
         })
 

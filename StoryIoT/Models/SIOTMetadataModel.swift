@@ -19,9 +19,9 @@ public struct SIOTMetadataModel: Codable {
     var uid: String?
     /// CorrelationToken. Идентификатор цепочки действий. Если события происходят одно за другим и выстраиваются в цепочку, то при возникновении первого события (событие верхнего уровня) ему присваивается токен корреляции и все дочернии события получают его. Так можно отследить последовательность действий от верхнего уровня и ниже. Пример: 96529FCA-6666-44F5-A462-66323E464444.
     var ct: String?
-    /// уникальный идентификатор. Если в теле передается сущность у которой есть уникальный идентификатор (например у сущности сессии есть sessionId), то он записывается в это поле. Пример: “32”.
+    /// Уникальный идентификатор. Если в теле передается сущность у которой есть уникальный идентификатор (например у сущности сессии есть sessionId), то он записывается в это поле. Пример: “32”.
     var id: String?
-    /// тип операции. Может быть “c” - create, “u” - update, “d” - delete.  Если передается сущность над которой выполнили операцию создания, редактирования или удаления то заполняется этот параметр. Пример: “с”.
+    /// Тип операции. Может быть “c” - create, “u” - update, “d” - delete.  Если передается сущность над которой выполнили операцию создания, редактирования или удаления то заполняется этот параметр. Пример: “с”.
     var cud: String?
     /// Model. Модель устройства, если таковую можно выявить. Пример: “iPad Air (WiFi/Cellular)”.
     var m: String? = UIDevice.current.name
@@ -29,38 +29,38 @@ public struct SIOTMetadataModel: Codable {
     var sn: String?
     /// Название операционной системы. Если возможно определить. Пример: “iPhone OS”.
     var os: String? = UIDevice.current.systemName
-    /// версия операционной системы. Если возможно определить. Пример: “9.1”.
+    /// Версия операционной системы. Если возможно определить. Пример: “9.1”.
     var osv: String? = UIDevice.current.systemVersion
     /// AppName. Название приложения. Пример: “TestApp”.
     var an: String? = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
-    /// AppVersion. Название приложения. Пример: “0.1.1”.
+    /// AppVersion. Версия приложения. Пример: “0.1.1”.
     var av: String? = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String
-    /// локальное время в формате ISO 8601. Время возникновения события на устройстве. Пример: “2020-05-28T09:02:49.5754586” без часового пояса и без “Z”.
+    /// LocalTime. Локальное время в формате ISO 8601. Время возникновения события на устройстве. Пример: “2020-05-28T09:02:49.5754586” без часового пояса и без “Z”.
     var lt: String?
     /// Time Zone. Часовой пояс. Пример: “+3”.
     var tz: String? = String(TimeZone.current.secondsFromGMT() / 3600)
-    /// геолокация. Если включена. Пример: “on;-34.8799074,174.7565664” или “off”.
+    /// Геолокация. Если включена. Пример: “on;-34.8799074,174.7565664” или “off”.
     var geo: String?
-    /// статус сети, как устройство подключено к сети(wifi, bt, lan ...);
+    /// Network status. Статус сети, как устройство подключено к сети(wifi, bt, lan ...);
     var ns: String?
-
+    /// Язык приложения.
     var lng: String?
     var ip: String?
     var mt: String?
 
-    init(message: SIOTMessageModel) {
+    public init(message: SIOTMessageModel) {
         self.eid = message.eventId
         self.uid = message.userId
         self.id = message.entityId
 
         self.cud = message.operationType?.rawValue
         self.lng = message.language
-        self.lt = self.timeString(from: message.created)
+        self.lt = message.created?.iotServerTimeString()
         self.geo = self.geoString(from: message.coordinate)
         self.ns = message.networkStatus
     }
 
-    func asDictionary() -> [String: String] {
+    public func asDictionary() -> [String: String] {
         var dict = [String: String]()
         if let eid = eid { dict["s-m-eid"] = eid }
         if let did = did { dict["s-m-did"] = did }
@@ -84,14 +84,6 @@ public struct SIOTMetadataModel: Codable {
     }
 
     // MARK: - Helpers
-
-    private func timeString(from date: Date?) -> String? {
-        guard let date = date else { return nil }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS"
-        return dateFormatter.string(from: date)
-    }
 
     private func geoString(from coordinate: CLLocationCoordinate2D?) -> String {
         guard let coordinate = coordinate else { return "off" }
