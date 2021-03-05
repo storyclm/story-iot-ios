@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.summary     = "StoryIoT"
 
   s.description = "StoryIoT library"
-  s.homepage    = "https://storyclm.com/"
+  s.homepage    = "https://breffi.ru/en/storyclm"
 
   s.license     = { :type => "MIT", :file => "LICENSE" }
 
