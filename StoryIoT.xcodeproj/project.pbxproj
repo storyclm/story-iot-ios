@@ -184,8 +184,8 @@
 		5C41A24E22A7A15A0097BC99 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5C41A24F22A7A1AA0097BC99 /* SIOTError.swift */,
 				1B596FEA25F2361100E2BEA0 /* Date+Ext.swift */,
+				5C41A24F22A7A1AA0097BC99 /* SIOTError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

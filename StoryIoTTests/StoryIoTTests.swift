@@ -40,6 +40,8 @@ class StoryIoTTests: XCTestCase {
         }
     }
 
+    // MARK: - Publis
+
     func testPublishSmall() {
 
         let expectation = self.expectation(description: "StoryIoT.PublishSmall")
@@ -56,7 +58,7 @@ class StoryIoTTests: XCTestCase {
         message.created = Date()
         message.operationType = (arc4random() % 2 == 0) ? .update : .create
 
-        self.storyIoT?.publish(message: message, success: { response in
+        self.storyIoT?.publish(message: message, success: { response, _ in
             expectation.fulfill()
         }, failure: { error, _ in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
@@ -84,7 +86,26 @@ class StoryIoTTests: XCTestCase {
         message.created = Date()
         message.operationType = (arc4random() % 2 == 0) ? .update : .create
 
-        self.storyIoT?.publish(message: message, success: { response in
+        self.storyIoT?.publish(message: message, success: { response, _ in
+            expectation.fulfill()
+        }, failure: { error, _ in
+            XCTFail("\(expectation.description) - \(error.localizedDescription)")
+        })
+
+        self.waitForExpectations(timeout: 15.0) { error in
+            if let error = error {
+                XCTFail("\(expectation.description) - \(error.localizedDescription)")
+            }
+        }
+    }
+
+    // MARK: - Message
+
+    private func testGetMessage() {
+        let expectation = self.expectation(description: "StoryIoT.GetMessage")
+
+        let messageId = "d9cf652f8b334f37a14107fb2b6b98f1"
+        self.storyIoT?.getMessage(withMessgaeId: messageId, success: { response, _ in
             expectation.fulfill()
         }, failure: { error, _ in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
