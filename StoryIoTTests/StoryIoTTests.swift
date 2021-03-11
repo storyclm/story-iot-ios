@@ -23,6 +23,12 @@ class StoryIoTTests: XCTestCase {
         }
     }
 
+    override func tearDown() {
+        super.tearDown()
+
+        self.storyIoT = nil
+    }
+
     func testRawInit() {
         let expectation = self.expectation(description: "StoryIoT.RawInit")
 
@@ -101,7 +107,7 @@ class StoryIoTTests: XCTestCase {
 
     // MARK: - Message
 
-    private func testGetMessage() {
+    func testGetMessage() {
         let expectation = self.expectation(description: "StoryIoT.GetMessage")
 
         let messageId = "d9cf652f8b334f37a14107fb2b6b98f1"
