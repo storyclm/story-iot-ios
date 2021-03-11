@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name        = "StoryIoT"
-  s.version     = "1.6.4"
+  s.version     = "1.6.5"
   s.summary     = "StoryIoT"
 
   s.description = "StoryIoT library"
