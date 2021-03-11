@@ -62,23 +62,23 @@ public struct SIOTMetadataModel: Codable {
 
     public func asDictionary() -> [String: String] {
         var dict = [String: String]()
-        if let eid = eid { dict["s-m-eid"] = eid }
-        if let did = did { dict["s-m-did"] = did }
-        if let uid = uid { dict["s-m-uid"] = uid }
-        if let ct = ct { dict["s-m-ct"] = ct }
-        if let id = id { dict["s-m-id"] = id }
-        if let cud = cud { dict["s-m-cud"] = cud }
-        if let m = m { dict["s-m-m"] = m }
-        if let sn = sn { dict["s-m-sn"] = sn }
-        if let os = os { dict["s-m-os"] = os }
-        if let osv = osv { dict["s-m-osv"] = osv }
-        if let an = an { dict["s-m-an"] = an }
-        if let av = av { dict["s-m-av"] = av }
-        if let lt = lt { dict["s-m-lt"] = lt }
-        if let tz = tz { dict["s-m-tz"] = tz }
-        if let geo = geo { dict["s-m-geo"] = geo }
-        if let lng = lng { dict["s-m-lng"] = lng }
-        if let ns = ns { dict["s-m-ns"] = ns }
+        if let eid = eid?.transliterate() { dict["s-m-eid"] = eid }
+        if let did = did?.transliterate() { dict["s-m-did"] = did }
+        if let uid = uid?.transliterate() { dict["s-m-uid"] = uid }
+        if let ct = ct?.transliterate() { dict["s-m-ct"] = ct }
+        if let id = id?.transliterate() { dict["s-m-id"] = id }
+        if let cud = cud?.transliterate() { dict["s-m-cud"] = cud }
+        if let m = m?.transliterate() { dict["s-m-m"] = m }
+        if let sn = sn?.transliterate() { dict["s-m-sn"] = sn }
+        if let os = os?.transliterate() { dict["s-m-os"] = os }
+        if let osv = osv?.transliterate() { dict["s-m-osv"] = osv }
+        if let an = an?.transliterate() { dict["s-m-an"] = an }
+        if let av = av?.transliterate() { dict["s-m-av"] = av }
+        if let lt = lt?.transliterate() { dict["s-m-lt"] = lt }
+        if let tz = tz?.transliterate() { dict["s-m-tz"] = tz }
+        if let geo = geo?.transliterate() { dict["s-m-geo"] = geo }
+        if let lng = lng?.transliterate() { dict["s-m-lng"] = lng }
+        if let ns = ns?.transliterate() { dict["s-m-ns"] = ns }
 
         return dict
     }
@@ -87,7 +87,13 @@ public struct SIOTMetadataModel: Codable {
 
     private func geoString(from coordinate: CLLocationCoordinate2D?) -> String {
         guard let coordinate = coordinate else { return "off" }
-
         return "on;\(coordinate.latitude),\(coordinate.longitude)"
+    }
+}
+
+fileprivate extension String {
+
+    func transliterate() -> String {
+        return self.applyingTransform(.toLatin, reverse: false)?.applyingTransform(.stripDiacritics, reverse: false) ?? self
     }
 }
