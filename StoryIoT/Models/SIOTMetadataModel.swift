@@ -24,7 +24,7 @@ public struct SIOTMetadataModel: Codable {
     /// Тип операции. Может быть “c” - create, “u” - update, “d” - delete.  Если передается сущность над которой выполнили операцию создания, редактирования или удаления то заполняется этот параметр. Пример: “с”.
     var cud: String?
     /// Model. Модель устройства, если таковую можно выявить. Пример: “iPad Air (WiFi/Cellular)”.
-    var m: String? = UIDevice.current.name
+    var m: String? = UIDevice.current.modelName
     /// SerialNumber. Серийный номер устройства или сетевой карты, если возможно получить.
     var sn: String?
     /// Название операционной системы. Если возможно определить. Пример: “iPhone OS”.
