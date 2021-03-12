@@ -46,7 +46,7 @@ class StoryIoTTests: XCTestCase {
         }
     }
 
-    // MARK: - Publis
+    // MARK: - Publish
 
     func testPublishSmall() {
 
@@ -64,9 +64,9 @@ class StoryIoTTests: XCTestCase {
         message.created = Date()
         message.operationType = (arc4random() % 2 == 0) ? .update : .create
 
-        self.storyIoT?.publish(message: message, success: { response, _ in
+        self.storyIoT?.publish(message: message, success: { response, dataResponse in
             expectation.fulfill()
-        }, failure: { error, _ in
+        }, failure: { error, dataResponse in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
         })
 
@@ -92,9 +92,9 @@ class StoryIoTTests: XCTestCase {
         message.created = Date()
         message.operationType = (arc4random() % 2 == 0) ? .update : .create
 
-        self.storyIoT?.publish(message: message, success: { response, _ in
+        self.storyIoT?.publish(message: message, success: { response, dataResponse in
             expectation.fulfill()
-        }, failure: { error, _ in
+        }, failure: { error, dataResponse in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
         })
 
@@ -110,10 +110,62 @@ class StoryIoTTests: XCTestCase {
     func testGetMessage() {
         let expectation = self.expectation(description: "StoryIoT.GetMessage")
 
-        let messageId = "d9cf652f8b334f37a14107fb2b6b98f1"
-        self.storyIoT?.getMessage(withMessgaeId: messageId, success: { response, _ in
+        let messageId = "274820d9b5d546048f0e5989f3a7ebc9"
+        self.storyIoT?.getMessage(withMessgaeId: messageId, success: { response, dataResponse in
             expectation.fulfill()
-        }, failure: { error, _ in
+        }, failure: { error, dataResponse in
+            XCTFail("\(expectation.description) - \(error.localizedDescription)")
+        })
+
+        self.waitForExpectations(timeout: 15.0) { error in
+            if let error = error {
+                XCTFail("\(expectation.description) - \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func testUpdateMetadata() {
+        let expectation = self.expectation(description: "StoryIoT.UpdateMetadata")
+
+        let messageId = "274820d9b5d546048f0e5989f3a7ebc9"
+        self.storyIoT?.updateMeta(metaName: "m", withNewValue: "iphone11,4", inMessageWithId: messageId, success: { response, dataResponse in
+            expectation.fulfill()
+        }, failure: { error, dataResponse in
+            XCTFail("\(expectation.description) - \(error.localizedDescription)")
+        })
+
+        self.waitForExpectations(timeout: 15.0) { error in
+            if let error = error {
+                XCTFail("\(expectation.description) - \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func testDeleteMetadata() {
+        let expectation = self.expectation(description: "StoryIoT.DeleteMetadata")
+
+        let messageId = "274820d9b5d546048f0e5989f3a7ebc9"
+        self.storyIoT?.deleteMeta(metaName: "m", inMessageWithId: messageId, success: { response, dataResponse in
+            expectation.fulfill()
+        }, failure: { error, dataResponse in
+            XCTFail("\(expectation.description) - \(error.localizedDescription)")
+        })
+
+        self.waitForExpectations(timeout: 15.0) { error in
+            if let error = error {
+                XCTFail("\(expectation.description) - \(error.localizedDescription)")
+            }
+        }
+    }
+
+    // MARK: - Feed
+
+    func testGetFeed() {
+        let expectation = self.expectation(description: "StoryIoT.GetFeed")
+
+        self.storyIoT?.getFeed(token: nil, direction: SIOTFeedDirection.forward, size: 100, success: { response, token, dataResponse in
+            expectation.fulfill()
+        }, failure: { error, dataResponse in
             XCTFail("\(expectation.description) - \(error.localizedDescription)")
         })
 
