@@ -79,10 +79,11 @@ extension SIOTMessageModel {
     private func appNetworkStatus() -> String {
         guard let reachabilityManager = NetworkReachabilityManager() else { return "none" }
 
-        let status = reachabilityManager.networkReachabilityStatus
+        
+        let status = reachabilityManager.status
         if case let NetworkReachabilityManager.NetworkReachabilityStatus.reachable(type) = status {
             switch type {
-            case .wwan:
+            case .cellular:
                 return "Cellular"
             case .ethernetOrWiFi:
                 return "Wi-Fi"

@@ -20,7 +20,7 @@ public enum SIOTFeedDirection: String {
 public class StoryIoT {
 
     private let authCredentials: SIOTAuthCredentials
-    private let manager = Alamofire.SessionManager.default
+    private let manager = Alamofire.Session.default
 
     public init(credentials: SIOTAuthCredentials) {
         self.authCredentials = credentials
@@ -51,8 +51,8 @@ public class StoryIoT {
     // MARK: - Publish
 
     public func publish(message: SIOTMessageModel,
-                        success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                        failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                        success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                        failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
         switch message.body {
         case .json:
@@ -77,8 +77,8 @@ public class StoryIoT {
     }
 
     func internalPublishSmall(message: SIOTMessageModel,
-                              success: @escaping (_ response: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                              failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                              success: @escaping (_ response: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                              failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
         guard let url = publishRequestUrl() else {
             let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
@@ -93,7 +93,7 @@ public class StoryIoT {
         }
 
         let metadata = SIOTMetadataModel(message: message)
-        var headers: HTTPHeaders = metadata.asDictionary()
+        var headers = HTTPHeaders(metadata.asDictionary())
         headers["Content-Type"] = "application/json"
 
         var jsonData: Data
@@ -107,10 +107,10 @@ public class StoryIoT {
 
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = headers.dictionary
         request.httpBody = jsonData
 
-        Alamofire.request(request).responseJSON { response in
+        AF.request(request).responseJSON { response in
 
             switch response.result {
             case .success:
@@ -152,8 +152,8 @@ public class StoryIoT {
     }
 
     func internalPublishLarge(message: SIOTMessageModel,
-                              success: @escaping (_ response: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                              failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                              success: @escaping (_ response: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                              failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
         guard let url = publishRequestUrl() else {
             let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
@@ -168,14 +168,14 @@ public class StoryIoT {
         }
 
         let metadata = SIOTMetadataModel(message: message)
-        var headers: HTTPHeaders = metadata.asDictionary()
+        var headers = HTTPHeaders(metadata.asDictionary())
         headers["Content-Type"] = "application/json"
 
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = headers.dictionary
 
-        Alamofire.request(request).responseJSON { response in
+        AF.request(request).responseJSON { response in
 
             switch response.result {
             case .success:
@@ -232,23 +232,23 @@ public class StoryIoT {
     }
 
     private func uploadLargeData(_ data: Data, url: URL,
-                                 success: @escaping (_ dataResponse: DataResponse<Any>) -> Void,
-                                 failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                                 success: @escaping (_ dataResponse: DataResponse<Any, AFError>) -> Void,
+                                 failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
         let hash = data.digest(.sha512).base64EncodedString()
         let hashResult = "base64;sha512;\(hash)"
 
-        let headers: HTTPHeaders = [
+        let headers = HTTPHeaders([
             "x-ms-blob-type": "BlockBlob",
             "x-ms-meta-hash": hashResult
-        ]
+        ])
 
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.put.rawValue
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = headers.dictionary
         request.httpBody = data
 
-        Alamofire.request(request).responseJSON { response in
+        AF.request(request).responseJSON { response in
             if let statusCode = response.response?.statusCode, statusCode == 201 {
                 success(response)
             } else {
@@ -263,8 +263,8 @@ public class StoryIoT {
     }
 
     private func confirmLarge(messageId: String,
-                              success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                              failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                              success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                              failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
         guard let url = getConfirmLargeUrl(messageId: messageId) else {
             let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
@@ -304,8 +304,8 @@ public class StoryIoT {
     /// Хранилище сообщений позволяет получать сообщение по идентификатору и управлять его мета данными.
     ///
     public func getMessage(withMessgaeId messageId: String,
-                           success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                           failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                           success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                           failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
         guard let url = getStorageRequestUrl(withMessageId: messageId) else {
             let err = SIOTError.make(description: "Can't get requestUrl", reason: nil)
@@ -345,8 +345,8 @@ public class StoryIoT {
     public func updateMeta(metaName: String,
                            withNewValue newValue: String,
                            inMessageWithId messageId: String,
-                           success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                           failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                           success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                           failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
 
         guard let url = updateStorageRequestUrl(withMessageId: messageId, metaName: metaName) else {
@@ -355,16 +355,16 @@ public class StoryIoT {
             return
         }
 
-        let headers: HTTPHeaders = [
+        let headers = HTTPHeaders([
             "Content-Type": "application/json"
-        ]
+        ])
 
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.put.rawValue
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = headers.dictionary
         request.httpBody = newValue.data(using: .utf8)
 
-        Alamofire.request(request).responseJSON { response in
+        AF.request(request).responseJSON { response in
 
             switch response.result {
             case .success:
@@ -394,8 +394,8 @@ public class StoryIoT {
     /// Для того, чтобы удалить метаданные необходимо использовать метод DELETE и указать название поля которое надо удалить. Если поле существует то оно будет удалено иначе операция будет проигнорирована без возникновения ошибки.
     ///
     public func deleteMeta(metaName: String, inMessageWithId messageId: String,
-                           success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any>) -> Void,
-                           failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                           success: @escaping (_ publishResponse: SIOTPublishResponse, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                           failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
 
         guard let url = deleteStorageRequestUrl(withMessageId: messageId, metaName: metaName) else {
@@ -447,8 +447,8 @@ public class StoryIoT {
     public func getFeed(token: String?,
                         direction: SIOTFeedDirection,
                         size: Int,
-                        success: @escaping (_ publishResponses: [SIOTPublishResponse], _ token: String?, _ dataResponse: DataResponse<Any>) -> Void,
-                        failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any>?) -> Void)
+                        success: @escaping (_ publishResponses: [SIOTPublishResponse], _ token: String?, _ dataResponse: DataResponse<Any, AFError>) -> Void,
+                        failure: @escaping (_ error: NSError, _ dataResponse: DataResponse<Any, AFError>?) -> Void)
     {
 
         guard let url = getFeedRequestUrl(token: token, direction: direction, size: size) else {

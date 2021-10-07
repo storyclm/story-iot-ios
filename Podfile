@@ -3,7 +3,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 def my_pods
-  pod 'Alamofire', '~> 4.9'
+  pod 'Alamofire', '~> 5.0'
 end
 
 target 'StoryIoT' do
