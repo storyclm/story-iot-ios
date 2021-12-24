@@ -10,6 +10,8 @@ import Foundation
 import CoreLocation
 import Alamofire
 
+// MARK: - SIOTMessageModel
+
 public class SIOTMessageModel {
 
     enum BodyModel {
@@ -79,7 +81,6 @@ extension SIOTMessageModel {
     private func appNetworkStatus() -> String {
         guard let reachabilityManager = NetworkReachabilityManager() else { return "none" }
 
-        
         let status = reachabilityManager.status
         if case let NetworkReachabilityManager.NetworkReachabilityStatus.reachable(type) = status {
             switch type {

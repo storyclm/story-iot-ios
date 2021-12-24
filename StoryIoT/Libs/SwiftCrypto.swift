@@ -23,11 +23,18 @@
 import Foundation
 import CommonCrypto
 
+// MARK: - Algorithm
+
 enum Algorithm {
-    case md5, sha1, sha224, sha256, sha384, sha512
+    case md5
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
 
     fileprivate var hmacAlgorithm: CCHmacAlgorithm {
-        var result: Int = 0
+        var result = 0
         switch self {
         case .md5: result = kCCHmacAlgMD5
         case .sha1: result = kCCHmacAlgSHA1
@@ -65,6 +72,8 @@ enum Algorithm {
         return Int(result)
     }
 }
+
+// MARK: - Hashable
 
 protocol Hashable {
     associatedtype Hash
@@ -105,10 +114,12 @@ extension Hashable {
     }
 }
 
+// MARK: - String + Hashable
+
 extension String: Hashable {
 
     func digest(_ algorithm: Algorithm) -> String {
-        return digest(algorithm, key: Optional<Data>.none)
+        return digest(algorithm, key: Data?.none)
     }
 
     func digest(_ algorithm: Algorithm, key: String?) -> String {
@@ -137,10 +148,12 @@ extension String: Hashable {
     }
 }
 
+// MARK: - Data + Hashable
+
 extension Data: Hashable {
 
     func digest(_ algorithm: Algorithm) -> Data {
-        return digest(algorithm, key: Optional<Data>.none)
+        return digest(algorithm, key: Data?.none)
     }
 
     func digest(_ algorithm: Algorithm, key: String?) -> Data {
@@ -176,7 +189,7 @@ private extension UnsafeMutablePointer where Pointee == CUnsignedChar {
 
     func toHexString(count: Int) -> String {
         var result = String()
-        for i in 0..<count {
+        for i in 0 ..< count {
             let s = String(self[i], radix: 16)
             if s.count % 2 == 1 {
                 result.append("0" + s)

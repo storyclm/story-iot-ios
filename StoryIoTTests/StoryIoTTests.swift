@@ -32,13 +32,13 @@ class StoryIoTTests: XCTestCase {
     func testRawInit() {
         let expectation = self.expectation(description: "StoryIoT.RawInit")
 
-        guard nil != StoryIoT(raw: "https://staging-iot.storychannels.app=b47bbc659eb344888f9f92ed3261d8dc=df94b12c3355425eb4efa406f09e8b9f=163af6783ae14d5f829288d1ca44950e=180") else {
+        guard StoryIoT(raw: "https://staging-iot.storychannels.app=b47bbc659eb344888f9f92ed3261d8dc=df94b12c3355425eb4efa406f09e8b9f=163af6783ae14d5f829288d1ca44950e=180") != nil else {
             XCTFail("\(expectation.description) - Init failed")
             return
         }
 
         expectation.fulfill()
-        
+
         self.waitForExpectations(timeout: 2) { error in
             if let error = error {
                 XCTFail("\(expectation.description) - \(error.localizedDescription)")

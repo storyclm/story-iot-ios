@@ -12,10 +12,14 @@ import CoreLocation
 
 let timeoutInterval: TimeInterval = 120
 
+// MARK: - SIOTFeedDirection
+
 public enum SIOTFeedDirection: String {
     case forward
     case backward
 }
+
+// MARK: - StoryIoT
 
 public class StoryIoT {
 
@@ -86,7 +90,7 @@ public class StoryIoT {
             return
         }
 
-        guard case SIOTMessageModel.BodyModel.json(let jsonBody) = message.body else {
+        guard case let SIOTMessageModel.BodyModel.json(jsonBody) = message.body else {
             let err = SIOTError.make(description: "Wrong body type of SIOTMessageModel for publishSmall", reason: nil)
             failure(err, nil)
             return
@@ -118,7 +122,7 @@ public class StoryIoT {
                     do {
                         let jsonResponse = try JSONDecoder().decode(SIOTPublishResponse.self, from: data)
                         success(jsonResponse, response)
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: nil)
                         failure(err, response)
@@ -129,7 +133,7 @@ public class StoryIoT {
                     failure(err, nil)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -161,7 +165,7 @@ public class StoryIoT {
             return
         }
 
-        guard case SIOTMessageModel.BodyModel.data(let bodyData) = message.body else {
+        guard case let SIOTMessageModel.BodyModel.data(bodyData) = message.body else {
             let error = SIOTError.make(description: "Wrong body type of SIOTMessageModel for publishLarge", reason: nil)
             failure(error, nil)
             return
@@ -213,7 +217,7 @@ public class StoryIoT {
                             failure(error, response)
                         }
 
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: err.localizedDescription)
                         failure(err, response)
@@ -224,7 +228,7 @@ public class StoryIoT {
                     failure(err, nil)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -240,7 +244,7 @@ public class StoryIoT {
 
         let headers = HTTPHeaders([
             "x-ms-blob-type": "BlockBlob",
-            "x-ms-meta-hash": hashResult
+            "x-ms-meta-hash": hashResult,
         ])
 
         var request = URLRequest(url: url)
@@ -281,7 +285,7 @@ public class StoryIoT {
                     do {
                         let jsonResponse = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(jsonResponse, response)
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: err.localizedDescription)
                         failure(err, response)
@@ -292,7 +296,7 @@ public class StoryIoT {
                     failure(err, response)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -322,7 +326,7 @@ public class StoryIoT {
                     do {
                         let jsonResponse = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(jsonResponse, response)
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: err.localizedDescription)
                         failure(err, response)
@@ -333,7 +337,7 @@ public class StoryIoT {
                     failure(err, response)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -356,7 +360,7 @@ public class StoryIoT {
         }
 
         let headers = HTTPHeaders([
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         ])
 
         var request = URLRequest(url: url)
@@ -373,7 +377,7 @@ public class StoryIoT {
                     do {
                         let jsonResponse = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(jsonResponse, response)
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: err.localizedDescription)
                         failure(err, response)
@@ -384,7 +388,7 @@ public class StoryIoT {
                     failure(err, response)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -414,7 +418,7 @@ public class StoryIoT {
                     do {
                         let jsonResponse = try jsonDecoder.decode(SIOTPublishResponse.self, from: data)
                         success(jsonResponse, response)
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: err.localizedDescription)
                         failure(err, response)
@@ -425,7 +429,7 @@ public class StoryIoT {
                     failure(err, response)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -469,7 +473,7 @@ public class StoryIoT {
                     do {
                         let jsonResponse = try jsonDecoder.decode([SIOTPublishResponse].self, from: data)
                         success(jsonResponse, token, response)
-                    } catch (let err) {
+                    } catch let err {
                         print(err.localizedDescription)
                         let err = SIOTError.make(description: "Can't decode SIOTPublishResponse data", reason: err.localizedDescription)
                         failure(err, response)
@@ -480,7 +484,7 @@ public class StoryIoT {
                     failure(err, response)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.localizedDescription)
                 failure(error as NSError, response)
             }
@@ -490,7 +494,7 @@ public class StoryIoT {
 
 // MARK: - URLs
 
-fileprivate extension StoryIoT {
+private extension StoryIoT {
 
     ///
     /// Каждый запрос к серверу имеет URL типа:
