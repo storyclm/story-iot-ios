@@ -10,7 +10,6 @@
 		1B089BA623E9A5FA00758920 /* SIOTSignBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B089BA523E9A5FA00758920 /* SIOTSignBuilder.swift */; };
 		1B356BA4246DDD0200B2C1FE /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B356BA3246DDD0100B2C1FE /* testImage.png */; };
 		1B596FEB25F2361100E2BEA0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B596FEA25F2361100E2BEA0 /* Date+Ext.swift */; };
-		1B86F60F25FA0E2A00C4749A /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B86F60E25FA0E2A00C4749A /* UIDevice+Ext.swift */; };
 		1BA92FF823F42C47006FF042 /* SIOTMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */; };
 		5C0DC13E22BCE8BB0092A9DF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC13D22BCE8BB0092A9DF /* LICENSE */; };
 		5C41A1D822A647AA0097BC99 /* StoryIoT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C41A1CE22A647AA0097BC99 /* StoryIoT.framework */; };
@@ -44,7 +43,6 @@
 		1B089BA523E9A5FA00758920 /* SIOTSignBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTSignBuilder.swift; sourceTree = "<group>"; };
 		1B356BA3246DDD0100B2C1FE /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		1B596FEA25F2361100E2BEA0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		1B86F60E25FA0E2A00C4749A /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		1BA92FF723F42C47006FF042 /* SIOTMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIOTMessageModel.swift; sourceTree = "<group>"; };
 		3004CA1B40FF0EA824D53E93 /* Pods-StoryIoT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryIoT.debug.xcconfig"; path = "Target Support Files/Pods-StoryIoT/Pods-StoryIoT.debug.xcconfig"; sourceTree = "<group>"; };
 		5C0DC13D22BCE8BB0092A9DF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				1B596FEA25F2361100E2BEA0 /* Date+Ext.swift */,
 				5C41A24F22A7A1AA0097BC99 /* SIOTError.swift */,
-				1B86F60E25FA0E2A00C4749A /* UIDevice+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +268,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5C41A1C422A647AA0097BC99;
 			productRefGroup = 5C41A1CF22A647AA0097BC99 /* Products */;
@@ -381,7 +379,6 @@
 				5C41A24822A67C410097BC99 /* SwiftCrypto.swift in Sources */,
 				5C41A20E22A64C5F0097BC99 /* SIOTAuthCredentials.swift in Sources */,
 				5C41A20922A64A1E0097BC99 /* StoryIoT.swift in Sources */,
-				1B86F60F25FA0E2A00C4749A /* UIDevice+Ext.swift in Sources */,
 				1BA92FF823F42C47006FF042 /* SIOTMessageModel.swift in Sources */,
 				5C41A24D22A7A04E0097BC99 /* SIOTPublishResponse.swift in Sources */,
 			);

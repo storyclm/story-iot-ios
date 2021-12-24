@@ -7,14 +7,21 @@
 //
 
 import Foundation
-import UIKit
 import CoreLocation
+
+#if os(iOS)
+    import UIKit
+#elseif os(OSX)
+    import Cocoa
+#endif
+
+// MARK: - SIOTMetadataModel
 
 public struct SIOTMetadataModel: Codable {
     /// EventId. Поле определяет тип события. Должен быть ассоциирован с конкретной моделью. Пример: clm.session.
     var eid: String?
     /// DeviceId. Идентификатор устройства, если поддерживается устройством. Пример: FDF5DA02-419E-465E-ADA6-A26B87097627.
-    var did: String? = UIDevice.current.identifierForVendor?.uuidString
+    var did: String? = SIOTMetadataModel.identifierForVendor()
     /// UserId. Идентификатор пользователя, если таковой имеется. Пример: 71529FCA-3154-44F5-A462-66323E464F23.
     var uid: String?
     /// CorrelationToken. Идентификатор цепочки действий. Если события происходят одно за другим и выстраиваются в цепочку, то при возникновении первого события (событие верхнего уровня) ему присваивается токен корреляции и все дочернии события получают его. Так можно отследить последовательность действий от верхнего уровня и ниже. Пример: 96529FCA-6666-44F5-A462-66323E464444.
@@ -24,15 +31,15 @@ public struct SIOTMetadataModel: Codable {
     /// Тип операции. Может быть “c” - create, “u” - update, “d” - delete.  Если передается сущность над которой выполнили операцию создания, редактирования или удаления то заполняется этот параметр. Пример: “с”.
     var cud: String?
     /// Model. Модель устройства, если таковую можно выявить. Пример: “iPad Air (WiFi/Cellular)”.
-    var m: String? = UIDevice.current.modelName
+    var m: String? = SIOTMetadataModel.deviceModelName()
     /// SerialNumber. Серийный номер устройства или сетевой карты, если возможно получить.
     var sn: String?
     /// Название операционной системы. Если возможно определить. Пример: “iPhone OS”.
-    var os: String? = UIDevice.current.systemName
+    var os: String? = SIOTMetadataModel.systemName()
     /// Версия операционной системы. Если возможно определить. Пример: “9.1”.
-    var osv: String? = UIDevice.current.systemVersion
+    var osv: String? = SIOTMetadataModel.systemVersion()
     /// AppName. Название приложения. Пример: “TestApp”.
-    var an: String? = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
+    var an: String? = SIOTMetadataModel.appName()
     /// AppVersion. Версия приложения. Пример: “0.1.1”.
     var av: String? = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String
     /// LocalTime. Локальное время в формате ISO 8601. Время возникновения события на устройстве. Пример: “2020-05-28T09:02:49.5754586” без часового пояса и без “Z”.
@@ -91,9 +98,66 @@ public struct SIOTMetadataModel: Codable {
     }
 }
 
-fileprivate extension String {
-
+private extension String {
     func transliterate() -> String {
         return self.applyingTransform(.toLatin, reverse: false)?.applyingTransform(.stripDiacritics, reverse: false) ?? self
+    }
+}
+
+private extension SIOTMetadataModel {
+
+    static func deviceModelName() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
+    }
+
+    static func systemName() -> String {
+        #if os(iOS)
+            return "iOS"
+        #elseif os(watchOS)
+            return "watchOS"
+        #elseif os(tvOS)
+            return "tvOS"
+        #elseif os(macOS)
+            return "macOS"
+        #else
+            return "Unknown OS"
+        #endif
+    }
+
+    static func appName() -> String? {
+        let bund = Bundle.main
+        if let displayName = bund.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+            if displayName.isEmpty == false {
+                return displayName
+            }
+        }
+
+        if let name = bund.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String {
+            return name
+        }
+        return nil
+    }
+
+    static func systemVersion() -> String? {
+        #if os(iOS) || os(tvOS) || os(watchOS)
+            return UIDevice.current.systemVersion
+        #else
+            return nil
+        #endif
+    }
+
+    static func identifierForVendor() -> String? {
+        #if os(iOS) || os(tvOS) || os(watchOS)
+            UIDevice.current.identifierForVendor?.uuidString
+        #else
+            return nil
+        #endif
     }
 }
